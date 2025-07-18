@@ -11,6 +11,7 @@ type SystemUser struct {
 	Email     string `json:"email,omitempty" firestore:"email,omitempty" bson:"email,omitempty"`
 	
 	IsActive bool `json:"is_active,omitempty" firestore:"is_active,omitempty" bson:"is_active,omitempty"`
+	IsProjectUser bool `json:"is_project_user,omitempty" firestore:"is_project_user,omitempty" bson:"is_project_user,omitempty"`
 }
 
 type MetaField struct {
