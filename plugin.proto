@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package apito.plugin.v1;
 
-option go_package = ".";
+option go_package = "./protobuff";
 
 import "google/protobuf/any.proto";
 import "google/protobuf/struct.proto";

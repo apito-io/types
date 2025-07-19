@@ -4,7 +4,7 @@
 // - protoc             v3.17.3
 // source: plugin.proto
 
-package __
+package protobuff
 
 import (
 	context "context"

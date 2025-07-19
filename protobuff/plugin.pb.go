@@ -4,7 +4,7 @@
 // 	protoc        v3.17.3
 // source: plugin.proto
 
-package __
+package protobuff
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -2626,7 +2626,7 @@ const file_plugin_proto_rawDesc = "" +
 	"\x11CreateNewResource\x12).apito.plugin.v1.CreateNewResourceRequest\x1a*.apito.plugin.v1.CreateNewResourceResponse\x12a\n" +
 	"\x0eUpdateResource\x12&.apito.plugin.v1.UpdateResourceRequest\x1a'.apito.plugin.v1.UpdateResourceResponse\x12a\n" +
 	"\x0eDeleteResource\x12&.apito.plugin.v1.DeleteResourceRequest\x1a'.apito.plugin.v1.DeleteResourceResponse\x12F\n" +
-	"\x05Debug\x12\x1d.apito.plugin.v1.DebugRequest\x1a\x1e.apito.plugin.v1.DebugResponseB\x03Z\x01.b\x06proto3"
+	"\x05Debug\x12\x1d.apito.plugin.v1.DebugRequest\x1a\x1e.apito.plugin.v1.DebugResponseB\rZ\v./protobuffb\x06proto3"
 
 var (
 	file_plugin_proto_rawDescOnce sync.Once
