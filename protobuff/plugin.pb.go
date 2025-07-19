@@ -23,73 +23,23 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Plugin category enum (renamed from PluginType)
-type PluginCategory int32
-
-const (
-	PluginCategory_PLUGIN_CATEGORY_NORMAL   PluginCategory = 0 // auth, customFunction etc
-	PluginCategory_PLUGIN_CATEGORY_FUNCTION PluginCategory = 1 // function execution plugins
-	PluginCategory_PLUGIN_CATEGORY_STORAGE  PluginCategory = 2 // s3, cloudinary etc
-)
-
-// Enum value maps for PluginCategory.
-var (
-	PluginCategory_name = map[int32]string{
-		0: "PLUGIN_CATEGORY_NORMAL",
-		1: "PLUGIN_CATEGORY_FUNCTION",
-		2: "PLUGIN_CATEGORY_STORAGE",
-	}
-	PluginCategory_value = map[string]int32{
-		"PLUGIN_CATEGORY_NORMAL":   0,
-		"PLUGIN_CATEGORY_FUNCTION": 1,
-		"PLUGIN_CATEGORY_STORAGE":  2,
-	}
-)
-
-func (x PluginCategory) Enum() *PluginCategory {
-	p := new(PluginCategory)
-	*p = x
-	return p
-}
-
-func (x PluginCategory) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (PluginCategory) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[0].Descriptor()
-}
-
-func (PluginCategory) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[0]
-}
-
-func (x PluginCategory) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use PluginCategory.Descriptor instead.
-func (PluginCategory) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{0}
-}
-
 // Plugin type enum for internal vs external
 type PluginType int32
 
 const (
-	PluginType_PLUGIN_TYPE_INTERNAL PluginType = 0 // System-wide plugins (registered to system API)
-	PluginType_PLUGIN_TYPE_EXTERNAL PluginType = 1 // Project-specific plugins
+	PluginType_PLUGIN_TYPE_SYSTEM  PluginType = 0 // System-wide plugins (registered to system API)
+	PluginType_PLUGIN_TYPE_PROJECT PluginType = 1 // Project-specific plugins
 )
 
 // Enum value maps for PluginType.
 var (
 	PluginType_name = map[int32]string{
-		0: "PLUGIN_TYPE_INTERNAL",
-		1: "PLUGIN_TYPE_EXTERNAL",
+		0: "PLUGIN_TYPE_SYSTEM",
+		1: "PLUGIN_TYPE_PROJECT",
 	}
 	PluginType_value = map[string]int32{
-		"PLUGIN_TYPE_INTERNAL": 0,
-		"PLUGIN_TYPE_EXTERNAL": 1,
+		"PLUGIN_TYPE_SYSTEM":  0,
+		"PLUGIN_TYPE_PROJECT": 1,
 	}
 )
 
@@ -104,11 +54,11 @@ func (x PluginType) String() string {
 }
 
 func (PluginType) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[1].Descriptor()
+	return file_plugin_proto_enumTypes[0].Descriptor()
 }
 
 func (PluginType) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[1]
+	return &file_plugin_proto_enumTypes[0]
 }
 
 func (x PluginType) Number() protoreflect.EnumNumber {
@@ -117,7 +67,7 @@ func (x PluginType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginType.Descriptor instead.
 func (PluginType) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{1}
+	return file_plugin_proto_rawDescGZIP(), []int{0}
 }
 
 // Plugin load status
@@ -163,11 +113,11 @@ func (x PluginLoadStatus) String() string {
 }
 
 func (PluginLoadStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[2].Descriptor()
+	return file_plugin_proto_enumTypes[1].Descriptor()
 }
 
 func (PluginLoadStatus) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[2]
+	return &file_plugin_proto_enumTypes[1]
 }
 
 func (x PluginLoadStatus) Number() protoreflect.EnumNumber {
@@ -176,7 +126,7 @@ func (x PluginLoadStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginLoadStatus.Descriptor instead.
 func (PluginLoadStatus) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{2}
+	return file_plugin_proto_rawDescGZIP(), []int{1}
 }
 
 // Plugin activate status
@@ -210,11 +160,11 @@ func (x PluginActivateStatus) String() string {
 }
 
 func (PluginActivateStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[3].Descriptor()
+	return file_plugin_proto_enumTypes[2].Descriptor()
 }
 
 func (PluginActivateStatus) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[3]
+	return &file_plugin_proto_enumTypes[2]
 }
 
 func (x PluginActivateStatus) Number() protoreflect.EnumNumber {
@@ -223,7 +173,7 @@ func (x PluginActivateStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginActivateStatus.Descriptor instead.
 func (PluginActivateStatus) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{3}
+	return file_plugin_proto_rawDescGZIP(), []int{2}
 }
 
 type PluginLanguage int32
@@ -286,11 +236,11 @@ func (x PluginLanguage) String() string {
 }
 
 func (PluginLanguage) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[4].Descriptor()
+	return file_plugin_proto_enumTypes[3].Descriptor()
 }
 
 func (PluginLanguage) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[4]
+	return &file_plugin_proto_enumTypes[3]
 }
 
 func (x PluginLanguage) Number() protoreflect.EnumNumber {
@@ -299,7 +249,7 @@ func (x PluginLanguage) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginLanguage.Descriptor instead.
 func (PluginLanguage) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{4}
+	return file_plugin_proto_rawDescGZIP(), []int{3}
 }
 
 // Common types
@@ -441,8 +391,8 @@ type PluginDetails struct {
 	Serial            int64                  `protobuf:"varint,4,opt,name=serial,proto3" json:"serial,omitempty"`
 	Version           string                 `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
 	Description       string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
-	Category          PluginCategory         `protobuf:"varint,7,opt,name=category,proto3,enum=apito.plugin.v1.PluginCategory" json:"category,omitempty"` // storage, function, normal
-	Type              PluginType             `protobuf:"varint,8,opt,name=type,proto3,enum=apito.plugin.v1.PluginType" json:"type,omitempty"`             // New field: internal vs external
+	Tags              []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
+	Type              PluginType             `protobuf:"varint,8,opt,name=type,proto3,enum=apito.plugin.v1.PluginType" json:"type,omitempty"` // New field: system vs project
 	Role              string                 `protobuf:"bytes,9,opt,name=role,proto3" json:"role,omitempty"`
 	EnvVars           []*EnvVariable         `protobuf:"bytes,10,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty"`
 	ExportedVariable  string                 `protobuf:"bytes,11,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty"`
@@ -534,18 +484,18 @@ func (x *PluginDetails) GetDescription() string {
 	return ""
 }
 
-func (x *PluginDetails) GetCategory() PluginCategory {
+func (x *PluginDetails) GetTags() []string {
 	if x != nil {
-		return x.Category
+		return x.Tags
 	}
-	return PluginCategory_PLUGIN_CATEGORY_NORMAL
+	return nil
 }
 
 func (x *PluginDetails) GetType() PluginType {
 	if x != nil {
 		return x.Type
 	}
-	return PluginType_PLUGIN_TYPE_INTERNAL
+	return PluginType_PLUGIN_TYPE_SYSTEM
 }
 
 func (x *PluginDetails) GetRole() string {
@@ -2438,15 +2388,15 @@ const file_plugin_proto_rawDesc = "" +
 	"\x18HashiCorpHandshakeConfig\x12)\n" +
 	"\x10protocol_version\x18\x01 \x01(\rR\x0fprotocolVersion\x12(\n" +
 	"\x10magic_cookie_key\x18\x02 \x01(\tR\x0emagicCookieKey\x12,\n" +
-	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\x82\a\n" +
+	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\xd9\x06\n" +
 	"\rPluginDetails\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
 	"\x04icon\x18\x03 \x01(\tR\x04icon\x12\x16\n" +
 	"\x06serial\x18\x04 \x01(\x03R\x06serial\x12\x18\n" +
 	"\aversion\x18\x05 \x01(\tR\aversion\x12 \n" +
-	"\vdescription\x18\x06 \x01(\tR\vdescription\x12;\n" +
-	"\bcategory\x18\a \x01(\x0e2\x1f.apito.plugin.v1.PluginCategoryR\bcategory\x12/\n" +
+	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x12\n" +
+	"\x04tags\x18\a \x03(\tR\x04tags\x12/\n" +
 	"\x04type\x18\b \x01(\x0e2\x1b.apito.plugin.v1.PluginTypeR\x04type\x12\x12\n" +
 	"\x04role\x18\t \x01(\tR\x04role\x127\n" +
 	"\benv_vars\x18\n" +
@@ -2576,15 +2526,11 @@ const file_plugin_proto_rawDesc = "" +
 	"\x05stage\x18\x01 \x01(\tR\x05stage\x12(\n" +
 	"\x04data\x18\x02 \x03(\v2\x14.google.protobuf.AnyR\x04data\"=\n" +
 	"\rDebugResponse\x12,\n" +
-	"\x06result\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x06result*g\n" +
-	"\x0ePluginCategory\x12\x1a\n" +
-	"\x16PLUGIN_CATEGORY_NORMAL\x10\x00\x12\x1c\n" +
-	"\x18PLUGIN_CATEGORY_FUNCTION\x10\x01\x12\x1b\n" +
-	"\x17PLUGIN_CATEGORY_STORAGE\x10\x02*@\n" +
+	"\x06result\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x06result*=\n" +
 	"\n" +
-	"PluginType\x12\x18\n" +
-	"\x14PLUGIN_TYPE_INTERNAL\x10\x00\x12\x18\n" +
-	"\x14PLUGIN_TYPE_EXTERNAL\x10\x01*\xdf\x01\n" +
+	"PluginType\x12\x16\n" +
+	"\x12PLUGIN_TYPE_SYSTEM\x10\x00\x12\x17\n" +
+	"\x13PLUGIN_TYPE_PROJECT\x10\x01*\xdf\x01\n" +
 	"\x10PluginLoadStatus\x12$\n" +
 	" PLUGIN_LOAD_STATUS_NOT_INSTALLED\x10\x00\x12 \n" +
 	"\x1cPLUGIN_LOAD_STATUS_INSTALLED\x10\x01\x12 \n" +
@@ -2640,127 +2586,125 @@ func file_plugin_proto_rawDescGZIP() []byte {
 	return file_plugin_proto_rawDescData
 }
 
-var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
+var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
 var file_plugin_proto_goTypes = []any{
-	(PluginCategory)(0),                  // 0: apito.plugin.v1.PluginCategory
-	(PluginType)(0),                      // 1: apito.plugin.v1.PluginType
-	(PluginLoadStatus)(0),                // 2: apito.plugin.v1.PluginLoadStatus
-	(PluginActivateStatus)(0),            // 3: apito.plugin.v1.PluginActivateStatus
-	(PluginLanguage)(0),                  // 4: apito.plugin.v1.PluginLanguage
-	(*EnvVariable)(nil),                  // 5: apito.plugin.v1.EnvVariable
-	(*HashiCorpHandshakeConfig)(nil),     // 6: apito.plugin.v1.HashiCorpHandshakeConfig
-	(*PluginDetails)(nil),                // 7: apito.plugin.v1.PluginDetails
-	(*ThirdPartyGraphQLSchemas)(nil),     // 8: apito.plugin.v1.ThirdPartyGraphQLSchemas
-	(*ThirdPartyRESTApi)(nil),            // 9: apito.plugin.v1.ThirdPartyRESTApi
-	(*PluginProject)(nil),                // 10: apito.plugin.v1.PluginProject
-	(*AuditData)(nil),                    // 11: apito.plugin.v1.AuditData
-	(*InitRequest)(nil),                  // 12: apito.plugin.v1.InitRequest
-	(*InitResponse)(nil),                 // 13: apito.plugin.v1.InitResponse
-	(*MigrationRequest)(nil),             // 14: apito.plugin.v1.MigrationRequest
-	(*MigrationResponse)(nil),            // 15: apito.plugin.v1.MigrationResponse
-	(*SchemaRegisterRequest)(nil),        // 16: apito.plugin.v1.SchemaRegisterRequest
-	(*SchemaRegisterResponse)(nil),       // 17: apito.plugin.v1.SchemaRegisterResponse
-	(*RESTApiRegisterRequest)(nil),       // 18: apito.plugin.v1.RESTApiRegisterRequest
-	(*RESTApiRegisterResponse)(nil),      // 19: apito.plugin.v1.RESTApiRegisterResponse
-	(*GetVersionRequest)(nil),            // 20: apito.plugin.v1.GetVersionRequest
-	(*GetVersionResponse)(nil),           // 21: apito.plugin.v1.GetVersionResponse
-	(*ExecuteRequest)(nil),               // 22: apito.plugin.v1.ExecuteRequest
-	(*ExecuteResponse)(nil),              // 23: apito.plugin.v1.ExecuteResponse
-	(*GenerateTenantTokenRequest)(nil),   // 24: apito.plugin.v1.GenerateTenantTokenRequest
-	(*GenerateTenantTokenResponse)(nil),  // 25: apito.plugin.v1.GenerateTenantTokenResponse
-	(*GetProjectDetailsRequest)(nil),     // 26: apito.plugin.v1.GetProjectDetailsRequest
-	(*GetProjectDetailsResponse)(nil),    // 27: apito.plugin.v1.GetProjectDetailsResponse
-	(*GetSingleResourceRequest)(nil),     // 28: apito.plugin.v1.GetSingleResourceRequest
-	(*GetSingleResourceResponse)(nil),    // 29: apito.plugin.v1.GetSingleResourceResponse
-	(*SearchResourcesRequest)(nil),       // 30: apito.plugin.v1.SearchResourcesRequest
-	(*SearchResourcesResponse)(nil),      // 31: apito.plugin.v1.SearchResourcesResponse
-	(*GetRelationDocumentsRequest)(nil),  // 32: apito.plugin.v1.GetRelationDocumentsRequest
-	(*GetRelationDocumentsResponse)(nil), // 33: apito.plugin.v1.GetRelationDocumentsResponse
-	(*CreateNewResourceRequest)(nil),     // 34: apito.plugin.v1.CreateNewResourceRequest
-	(*CreateNewResourceResponse)(nil),    // 35: apito.plugin.v1.CreateNewResourceResponse
-	(*UpdateResourceRequest)(nil),        // 36: apito.plugin.v1.UpdateResourceRequest
-	(*UpdateResourceResponse)(nil),       // 37: apito.plugin.v1.UpdateResourceResponse
-	(*DeleteResourceRequest)(nil),        // 38: apito.plugin.v1.DeleteResourceRequest
-	(*DeleteResourceResponse)(nil),       // 39: apito.plugin.v1.DeleteResourceResponse
-	(*DebugRequest)(nil),                 // 40: apito.plugin.v1.DebugRequest
-	(*DebugResponse)(nil),                // 41: apito.plugin.v1.DebugResponse
-	(*structpb.Struct)(nil),              // 42: google.protobuf.Struct
-	(*anypb.Any)(nil),                    // 43: google.protobuf.Any
+	(PluginType)(0),                      // 0: apito.plugin.v1.PluginType
+	(PluginLoadStatus)(0),                // 1: apito.plugin.v1.PluginLoadStatus
+	(PluginActivateStatus)(0),            // 2: apito.plugin.v1.PluginActivateStatus
+	(PluginLanguage)(0),                  // 3: apito.plugin.v1.PluginLanguage
+	(*EnvVariable)(nil),                  // 4: apito.plugin.v1.EnvVariable
+	(*HashiCorpHandshakeConfig)(nil),     // 5: apito.plugin.v1.HashiCorpHandshakeConfig
+	(*PluginDetails)(nil),                // 6: apito.plugin.v1.PluginDetails
+	(*ThirdPartyGraphQLSchemas)(nil),     // 7: apito.plugin.v1.ThirdPartyGraphQLSchemas
+	(*ThirdPartyRESTApi)(nil),            // 8: apito.plugin.v1.ThirdPartyRESTApi
+	(*PluginProject)(nil),                // 9: apito.plugin.v1.PluginProject
+	(*AuditData)(nil),                    // 10: apito.plugin.v1.AuditData
+	(*InitRequest)(nil),                  // 11: apito.plugin.v1.InitRequest
+	(*InitResponse)(nil),                 // 12: apito.plugin.v1.InitResponse
+	(*MigrationRequest)(nil),             // 13: apito.plugin.v1.MigrationRequest
+	(*MigrationResponse)(nil),            // 14: apito.plugin.v1.MigrationResponse
+	(*SchemaRegisterRequest)(nil),        // 15: apito.plugin.v1.SchemaRegisterRequest
+	(*SchemaRegisterResponse)(nil),       // 16: apito.plugin.v1.SchemaRegisterResponse
+	(*RESTApiRegisterRequest)(nil),       // 17: apito.plugin.v1.RESTApiRegisterRequest
+	(*RESTApiRegisterResponse)(nil),      // 18: apito.plugin.v1.RESTApiRegisterResponse
+	(*GetVersionRequest)(nil),            // 19: apito.plugin.v1.GetVersionRequest
+	(*GetVersionResponse)(nil),           // 20: apito.plugin.v1.GetVersionResponse
+	(*ExecuteRequest)(nil),               // 21: apito.plugin.v1.ExecuteRequest
+	(*ExecuteResponse)(nil),              // 22: apito.plugin.v1.ExecuteResponse
+	(*GenerateTenantTokenRequest)(nil),   // 23: apito.plugin.v1.GenerateTenantTokenRequest
+	(*GenerateTenantTokenResponse)(nil),  // 24: apito.plugin.v1.GenerateTenantTokenResponse
+	(*GetProjectDetailsRequest)(nil),     // 25: apito.plugin.v1.GetProjectDetailsRequest
+	(*GetProjectDetailsResponse)(nil),    // 26: apito.plugin.v1.GetProjectDetailsResponse
+	(*GetSingleResourceRequest)(nil),     // 27: apito.plugin.v1.GetSingleResourceRequest
+	(*GetSingleResourceResponse)(nil),    // 28: apito.plugin.v1.GetSingleResourceResponse
+	(*SearchResourcesRequest)(nil),       // 29: apito.plugin.v1.SearchResourcesRequest
+	(*SearchResourcesResponse)(nil),      // 30: apito.plugin.v1.SearchResourcesResponse
+	(*GetRelationDocumentsRequest)(nil),  // 31: apito.plugin.v1.GetRelationDocumentsRequest
+	(*GetRelationDocumentsResponse)(nil), // 32: apito.plugin.v1.GetRelationDocumentsResponse
+	(*CreateNewResourceRequest)(nil),     // 33: apito.plugin.v1.CreateNewResourceRequest
+	(*CreateNewResourceResponse)(nil),    // 34: apito.plugin.v1.CreateNewResourceResponse
+	(*UpdateResourceRequest)(nil),        // 35: apito.plugin.v1.UpdateResourceRequest
+	(*UpdateResourceResponse)(nil),       // 36: apito.plugin.v1.UpdateResourceResponse
+	(*DeleteResourceRequest)(nil),        // 37: apito.plugin.v1.DeleteResourceRequest
+	(*DeleteResourceResponse)(nil),       // 38: apito.plugin.v1.DeleteResourceResponse
+	(*DebugRequest)(nil),                 // 39: apito.plugin.v1.DebugRequest
+	(*DebugResponse)(nil),                // 40: apito.plugin.v1.DebugResponse
+	(*structpb.Struct)(nil),              // 41: google.protobuf.Struct
+	(*anypb.Any)(nil),                    // 42: google.protobuf.Any
 }
 var file_plugin_proto_depIdxs = []int32{
-	0,  // 0: apito.plugin.v1.PluginDetails.category:type_name -> apito.plugin.v1.PluginCategory
-	1,  // 1: apito.plugin.v1.PluginDetails.type:type_name -> apito.plugin.v1.PluginType
-	5,  // 2: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
-	2,  // 3: apito.plugin.v1.PluginDetails.load_status:type_name -> apito.plugin.v1.PluginLoadStatus
-	3,  // 4: apito.plugin.v1.PluginDetails.activate_status:type_name -> apito.plugin.v1.PluginActivateStatus
-	6,  // 5: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
-	4,  // 6: apito.plugin.v1.PluginDetails.language:type_name -> apito.plugin.v1.PluginLanguage
-	42, // 7: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
-	42, // 8: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
-	42, // 9: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
-	42, // 10: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
-	42, // 11: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
-	42, // 12: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
-	42, // 13: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
-	42, // 14: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
-	42, // 15: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
-	5,  // 16: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
-	8,  // 17: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
-	9,  // 18: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
-	42, // 19: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
-	42, // 20: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
-	43, // 21: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
-	10, // 22: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
-	43, // 23: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
-	42, // 24: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
-	43, // 25: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
-	42, // 26: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
-	43, // 27: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
-	42, // 28: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
-	42, // 29: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
-	43, // 30: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
-	42, // 31: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
-	42, // 32: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
-	42, // 33: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
-	43, // 34: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
-	43, // 35: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
-	43, // 36: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
-	12, // 37: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
-	14, // 38: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
-	16, // 39: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
-	18, // 40: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
-	20, // 41: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
-	22, // 42: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
-	24, // 43: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
-	26, // 44: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
-	28, // 45: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
-	30, // 46: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
-	32, // 47: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
-	34, // 48: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
-	36, // 49: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
-	38, // 50: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
-	40, // 51: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
-	13, // 52: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
-	15, // 53: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
-	17, // 54: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
-	19, // 55: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
-	21, // 56: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
-	23, // 57: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
-	25, // 58: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
-	27, // 59: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
-	29, // 60: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
-	31, // 61: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
-	33, // 62: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
-	35, // 63: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
-	37, // 64: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
-	39, // 65: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
-	41, // 66: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
-	52, // [52:67] is the sub-list for method output_type
-	37, // [37:52] is the sub-list for method input_type
-	37, // [37:37] is the sub-list for extension type_name
-	37, // [37:37] is the sub-list for extension extendee
-	0,  // [0:37] is the sub-list for field type_name
+	0,  // 0: apito.plugin.v1.PluginDetails.type:type_name -> apito.plugin.v1.PluginType
+	4,  // 1: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	1,  // 2: apito.plugin.v1.PluginDetails.load_status:type_name -> apito.plugin.v1.PluginLoadStatus
+	2,  // 3: apito.plugin.v1.PluginDetails.activate_status:type_name -> apito.plugin.v1.PluginActivateStatus
+	5,  // 4: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
+	3,  // 5: apito.plugin.v1.PluginDetails.language:type_name -> apito.plugin.v1.PluginLanguage
+	41, // 6: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
+	41, // 7: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
+	41, // 8: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
+	41, // 9: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
+	41, // 10: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
+	41, // 11: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
+	41, // 12: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
+	41, // 13: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
+	41, // 14: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
+	4,  // 15: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	7,  // 16: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
+	8,  // 17: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
+	41, // 18: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
+	41, // 19: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
+	42, // 20: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
+	9,  // 21: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
+	42, // 22: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
+	41, // 23: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
+	42, // 24: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
+	41, // 25: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
+	42, // 26: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
+	41, // 27: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
+	41, // 28: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
+	42, // 29: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
+	41, // 30: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
+	41, // 31: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
+	41, // 32: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
+	42, // 33: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
+	42, // 34: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
+	42, // 35: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
+	11, // 36: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
+	13, // 37: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
+	15, // 38: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
+	17, // 39: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
+	19, // 40: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
+	21, // 41: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
+	23, // 42: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
+	25, // 43: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
+	27, // 44: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
+	29, // 45: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
+	31, // 46: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
+	33, // 47: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
+	35, // 48: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
+	37, // 49: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
+	39, // 50: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
+	12, // 51: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
+	14, // 52: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
+	16, // 53: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
+	18, // 54: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
+	20, // 55: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
+	22, // 56: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
+	24, // 57: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
+	26, // 58: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
+	28, // 59: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
+	30, // 60: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
+	32, // 61: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
+	34, // 62: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
+	36, // 63: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
+	38, // 64: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
+	40, // 65: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
+	51, // [51:66] is the sub-list for method output_type
+	36, // [36:51] is the sub-list for method input_type
+	36, // [36:36] is the sub-list for extension type_name
+	36, // [36:36] is the sub-list for extension extendee
+	0,  // [0:36] is the sub-list for field type_name
 }
 
 func init() { file_plugin_proto_init() }
@@ -2773,7 +2717,7 @@ func file_plugin_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_plugin_proto_rawDesc), len(file_plugin_proto_rawDesc)),
-			NumEnums:      5,
+			NumEnums:      4,
 			NumMessages:   37,
 			NumExtensions: 0,
 			NumServices:   2,

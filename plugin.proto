@@ -67,17 +67,10 @@ message EnvVariable {
   bool is_system = 4;
 }
 
-// Plugin category enum (renamed from PluginType)
-enum PluginCategory {
-  PLUGIN_CATEGORY_NORMAL = 0;    // auth, customFunction etc
-  PLUGIN_CATEGORY_FUNCTION = 1;  // function execution plugins
-  PLUGIN_CATEGORY_STORAGE = 2;   // s3, cloudinary etc
-}
-
 // Plugin type enum for internal vs external
 enum PluginType {
-  PLUGIN_TYPE_INTERNAL = 0;  // System-wide plugins (registered to system API)
-  PLUGIN_TYPE_EXTERNAL = 1;  // Project-specific plugins
+  PLUGIN_TYPE_SYSTEM = 0;  // System-wide plugins (registered to system API)
+  PLUGIN_TYPE_PROJECT = 1;  // Project-specific plugins
 }
 
 // Plugin load status
@@ -111,8 +104,8 @@ message PluginDetails {
   int64 serial = 4;
   string version = 5;
   string description = 6;
-  PluginCategory category = 7;        // storage, function, normal
-  PluginType type = 8;                // New field: internal vs external
+  repeated string tags = 7;
+  PluginType type = 8;                // New field: system vs project
   string role = 9;
   repeated EnvVariable env_vars = 10;
   string exported_variable = 11;
