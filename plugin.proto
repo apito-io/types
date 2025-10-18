@@ -121,6 +121,11 @@ message PluginDetails {
   string binary_path = 20;
   HashiCorpHandshakeConfig handshake_config = 21;
   PluginLanguage language = 22;
+  PluginUIConfig ui_config = 23;
+}
+
+message PluginUIConfig {
+  string entry_path = 1;
 }
 
 enum PluginLanguage {
