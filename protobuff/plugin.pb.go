@@ -23,53 +23,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Plugin type enum for internal vs external
-type PluginType int32
-
-const (
-	PluginType_PLUGIN_TYPE_SYSTEM  PluginType = 0 // System-wide plugins (registered to system API)
-	PluginType_PLUGIN_TYPE_PROJECT PluginType = 1 // Project-specific plugins
-)
-
-// Enum value maps for PluginType.
-var (
-	PluginType_name = map[int32]string{
-		0: "PLUGIN_TYPE_SYSTEM",
-		1: "PLUGIN_TYPE_PROJECT",
-	}
-	PluginType_value = map[string]int32{
-		"PLUGIN_TYPE_SYSTEM":  0,
-		"PLUGIN_TYPE_PROJECT": 1,
-	}
-)
-
-func (x PluginType) Enum() *PluginType {
-	p := new(PluginType)
-	*p = x
-	return p
-}
-
-func (x PluginType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (PluginType) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[0].Descriptor()
-}
-
-func (PluginType) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[0]
-}
-
-func (x PluginType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use PluginType.Descriptor instead.
-func (PluginType) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{0}
-}
-
 // Plugin load status
 type PluginLoadStatus int32
 
@@ -113,11 +66,11 @@ func (x PluginLoadStatus) String() string {
 }
 
 func (PluginLoadStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[1].Descriptor()
+	return file_plugin_proto_enumTypes[0].Descriptor()
 }
 
 func (PluginLoadStatus) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[1]
+	return &file_plugin_proto_enumTypes[0]
 }
 
 func (x PluginLoadStatus) Number() protoreflect.EnumNumber {
@@ -126,7 +79,7 @@ func (x PluginLoadStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginLoadStatus.Descriptor instead.
 func (PluginLoadStatus) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{1}
+	return file_plugin_proto_rawDescGZIP(), []int{0}
 }
 
 // Plugin activate status
@@ -160,11 +113,11 @@ func (x PluginActivateStatus) String() string {
 }
 
 func (PluginActivateStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[2].Descriptor()
+	return file_plugin_proto_enumTypes[1].Descriptor()
 }
 
 func (PluginActivateStatus) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[2]
+	return &file_plugin_proto_enumTypes[1]
 }
 
 func (x PluginActivateStatus) Number() protoreflect.EnumNumber {
@@ -173,7 +126,7 @@ func (x PluginActivateStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginActivateStatus.Descriptor instead.
 func (PluginActivateStatus) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{2}
+	return file_plugin_proto_rawDescGZIP(), []int{1}
 }
 
 type PluginLanguage int32
@@ -236,11 +189,11 @@ func (x PluginLanguage) String() string {
 }
 
 func (PluginLanguage) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[3].Descriptor()
+	return file_plugin_proto_enumTypes[2].Descriptor()
 }
 
 func (PluginLanguage) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[3]
+	return &file_plugin_proto_enumTypes[2]
 }
 
 func (x PluginLanguage) Number() protoreflect.EnumNumber {
@@ -249,7 +202,7 @@ func (x PluginLanguage) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use PluginLanguage.Descriptor instead.
 func (PluginLanguage) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{3}
+	return file_plugin_proto_rawDescGZIP(), []int{2}
 }
 
 // Common types
@@ -384,31 +337,31 @@ func (x *HashiCorpHandshakeConfig) GetMagicCookieValue() string {
 
 // Plugin details message
 type PluginDetails struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title             string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Icon              string                 `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`
-	Serial            int64                  `protobuf:"varint,4,opt,name=serial,proto3" json:"serial,omitempty"`
-	Version           string                 `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
-	Description       string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
-	Tags              []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
-	Type              PluginType             `protobuf:"varint,8,opt,name=type,proto3,enum=apito.plugin.v1.PluginType" json:"type,omitempty"` // New field: system vs project
-	Role              string                 `protobuf:"bytes,9,opt,name=role,proto3" json:"role,omitempty"`
-	EnvVars           []*EnvVariable         `protobuf:"bytes,10,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty"`
-	ExportedVariable  string                 `protobuf:"bytes,11,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty"`
-	Enable            bool                   `protobuf:"varint,12,opt,name=enable,proto3" json:"enable,omitempty"`
-	Debug             bool                   `protobuf:"varint,13,opt,name=debug,proto3" json:"debug,omitempty"`
-	RepositoryUrl     string                 `protobuf:"bytes,14,opt,name=repository_url,json=repositoryUrl,proto3" json:"repository_url,omitempty"`
-	Branch            string                 `protobuf:"bytes,15,opt,name=branch,proto3" json:"branch,omitempty"`
-	Author            string                 `protobuf:"bytes,16,opt,name=author,proto3" json:"author,omitempty"`
-	LoadStatus        PluginLoadStatus       `protobuf:"varint,17,opt,name=load_status,json=loadStatus,proto3,enum=apito.plugin.v1.PluginLoadStatus" json:"load_status,omitempty"`
-	ActivateStatus    PluginActivateStatus   `protobuf:"varint,18,opt,name=activate_status,json=activateStatus,proto3,enum=apito.plugin.v1.PluginActivateStatus" json:"activate_status,omitempty"`
-	BelongsToProjects []string               `protobuf:"bytes,19,rep,name=belongs_to_projects,json=belongsToProjects,proto3" json:"belongs_to_projects,omitempty"` // project ids
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	Id                       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title                    string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Icon                     string                 `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`
+	Serial                   int64                  `protobuf:"varint,4,opt,name=serial,proto3" json:"serial,omitempty"`
+	Version                  string                 `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
+	Description              string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
+	Tags                     []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
+	EnvVars                  []*EnvVariable         `protobuf:"bytes,8,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty"`
+	ExportedVariable         string                 `protobuf:"bytes,9,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty"`
+	Enable                   bool                   `protobuf:"varint,10,opt,name=enable,proto3" json:"enable,omitempty"`
+	Debug                    bool                   `protobuf:"varint,11,opt,name=debug,proto3" json:"debug,omitempty"`
+	RepositoryUrl            string                 `protobuf:"bytes,12,opt,name=repository_url,json=repositoryUrl,proto3" json:"repository_url,omitempty"`
+	Branch                   string                 `protobuf:"bytes,13,opt,name=branch,proto3" json:"branch,omitempty"`
+	Author                   string                 `protobuf:"bytes,14,opt,name=author,proto3" json:"author,omitempty"`
+	LoadStatus               PluginLoadStatus       `protobuf:"varint,15,opt,name=load_status,json=loadStatus,proto3,enum=apito.plugin.v1.PluginLoadStatus" json:"load_status,omitempty"`
+	ActivateStatus           PluginActivateStatus   `protobuf:"varint,16,opt,name=activate_status,json=activateStatus,proto3,enum=apito.plugin.v1.PluginActivateStatus" json:"activate_status,omitempty"`
+	EnableForProjects        []string               `protobuf:"bytes,17,rep,name=enable_for_projects,json=enableForProjects,proto3" json:"enable_for_projects,omitempty"` // enable only for these project ids
+	Language                 PluginLanguage         `protobuf:"varint,18,opt,name=language,proto3,enum=apito.plugin.v1.PluginLanguage" json:"language,omitempty"`
+	UiConfig                 *PluginUIConfig        `protobuf:"bytes,19,opt,name=ui_config,json=uiConfig,proto3" json:"ui_config,omitempty"`
+	RegisteredGraphqlSchemas []string               `protobuf:"bytes,20,rep,name=registered_graphql_schemas,json=registeredGraphqlSchemas,proto3" json:"registered_graphql_schemas,omitempty"`
+	RegisteredRestApis       []string               `protobuf:"bytes,21,rep,name=registered_rest_apis,json=registeredRestApis,proto3" json:"registered_rest_apis,omitempty"`
 	// HashiCorp specific fields
-	BinaryPath      string                    `protobuf:"bytes,20,opt,name=binary_path,json=binaryPath,proto3" json:"binary_path,omitempty"`
-	HandshakeConfig *HashiCorpHandshakeConfig `protobuf:"bytes,21,opt,name=handshake_config,json=handshakeConfig,proto3" json:"handshake_config,omitempty"`
-	Language        PluginLanguage            `protobuf:"varint,22,opt,name=language,proto3,enum=apito.plugin.v1.PluginLanguage" json:"language,omitempty"`
-	UiConfig        *PluginUIConfig           `protobuf:"bytes,23,opt,name=ui_config,json=uiConfig,proto3" json:"ui_config,omitempty"`
+	BinaryPath      string                    `protobuf:"bytes,22,opt,name=binary_path,json=binaryPath,proto3" json:"binary_path,omitempty"`
+	HandshakeConfig *HashiCorpHandshakeConfig `protobuf:"bytes,23,opt,name=handshake_config,json=handshakeConfig,proto3" json:"handshake_config,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -492,20 +445,6 @@ func (x *PluginDetails) GetTags() []string {
 	return nil
 }
 
-func (x *PluginDetails) GetType() PluginType {
-	if x != nil {
-		return x.Type
-	}
-	return PluginType_PLUGIN_TYPE_SYSTEM
-}
-
-func (x *PluginDetails) GetRole() string {
-	if x != nil {
-		return x.Role
-	}
-	return ""
-}
-
 func (x *PluginDetails) GetEnvVars() []*EnvVariable {
 	if x != nil {
 		return x.EnvVars
@@ -569,23 +508,9 @@ func (x *PluginDetails) GetActivateStatus() PluginActivateStatus {
 	return PluginActivateStatus_PLUGIN_ACTIVATE_STATUS_DEACTIVATED
 }
 
-func (x *PluginDetails) GetBelongsToProjects() []string {
+func (x *PluginDetails) GetEnableForProjects() []string {
 	if x != nil {
-		return x.BelongsToProjects
-	}
-	return nil
-}
-
-func (x *PluginDetails) GetBinaryPath() string {
-	if x != nil {
-		return x.BinaryPath
-	}
-	return ""
-}
-
-func (x *PluginDetails) GetHandshakeConfig() *HashiCorpHandshakeConfig {
-	if x != nil {
-		return x.HandshakeConfig
+		return x.EnableForProjects
 	}
 	return nil
 }
@@ -604,9 +529,40 @@ func (x *PluginDetails) GetUiConfig() *PluginUIConfig {
 	return nil
 }
 
+func (x *PluginDetails) GetRegisteredGraphqlSchemas() []string {
+	if x != nil {
+		return x.RegisteredGraphqlSchemas
+	}
+	return nil
+}
+
+func (x *PluginDetails) GetRegisteredRestApis() []string {
+	if x != nil {
+		return x.RegisteredRestApis
+	}
+	return nil
+}
+
+func (x *PluginDetails) GetBinaryPath() string {
+	if x != nil {
+		return x.BinaryPath
+	}
+	return ""
+}
+
+func (x *PluginDetails) GetHandshakeConfig() *HashiCorpHandshakeConfig {
+	if x != nil {
+		return x.HandshakeConfig
+	}
+	return nil
+}
+
 type PluginUIConfig struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EntryPath     string                 `protobuf:"bytes,1,opt,name=entry_path,json=entryPath,proto3" json:"entry_path,omitempty"`
+	Enable        bool                   `protobuf:"varint,1,opt,name=enable,proto3" json:"enable,omitempty"`
+	DistPath      string                 `protobuf:"bytes,2,opt,name=dist_path,json=distPath,proto3" json:"dist_path,omitempty"`
+	Integration   *PluginUIIntegration   `protobuf:"bytes,3,opt,name=integration,proto3" json:"integration,omitempty"`
+	Settings      []*PluginUISettings    `protobuf:"bytes,4,rep,name=settings,proto3" json:"settings,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -641,9 +597,262 @@ func (*PluginUIConfig) Descriptor() ([]byte, []int) {
 	return file_plugin_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *PluginUIConfig) GetEntryPath() string {
+func (x *PluginUIConfig) GetEnable() bool {
 	if x != nil {
-		return x.EntryPath
+		return x.Enable
+	}
+	return false
+}
+
+func (x *PluginUIConfig) GetDistPath() string {
+	if x != nil {
+		return x.DistPath
+	}
+	return ""
+}
+
+func (x *PluginUIConfig) GetIntegration() *PluginUIIntegration {
+	if x != nil {
+		return x.Integration
+	}
+	return nil
+}
+
+func (x *PluginUIConfig) GetSettings() []*PluginUISettings {
+	if x != nil {
+		return x.Settings
+	}
+	return nil
+}
+
+type PluginUIIntegration struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	HeaderMenu    *PluginUIMenu          `protobuf:"bytes,1,opt,name=header_menu,json=headerMenu,proto3" json:"header_menu,omitempty"`
+	Routes        []*PluginUIRoute       `protobuf:"bytes,2,rep,name=routes,proto3" json:"routes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PluginUIIntegration) Reset() {
+	*x = PluginUIIntegration{}
+	mi := &file_plugin_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PluginUIIntegration) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PluginUIIntegration) ProtoMessage() {}
+
+func (x *PluginUIIntegration) ProtoReflect() protoreflect.Message {
+	mi := &file_plugin_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PluginUIIntegration.ProtoReflect.Descriptor instead.
+func (*PluginUIIntegration) Descriptor() ([]byte, []int) {
+	return file_plugin_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *PluginUIIntegration) GetHeaderMenu() *PluginUIMenu {
+	if x != nil {
+		return x.HeaderMenu
+	}
+	return nil
+}
+
+func (x *PluginUIIntegration) GetRoutes() []*PluginUIRoute {
+	if x != nil {
+		return x.Routes
+	}
+	return nil
+}
+
+type PluginUIRoute struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	Component     string                 `protobuf:"bytes,2,opt,name=component,proto3" json:"component,omitempty"`
+	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PluginUIRoute) Reset() {
+	*x = PluginUIRoute{}
+	mi := &file_plugin_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PluginUIRoute) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PluginUIRoute) ProtoMessage() {}
+
+func (x *PluginUIRoute) ProtoReflect() protoreflect.Message {
+	mi := &file_plugin_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PluginUIRoute.ProtoReflect.Descriptor instead.
+func (*PluginUIRoute) Descriptor() ([]byte, []int) {
+	return file_plugin_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PluginUIRoute) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *PluginUIRoute) GetComponent() string {
+	if x != nil {
+		return x.Component
+	}
+	return ""
+}
+
+func (x *PluginUIRoute) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+type PluginUISettings struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Menu          *PluginUIMenu          `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty"`
+	Section       string                 `protobuf:"bytes,2,opt,name=section,proto3" json:"section,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PluginUISettings) Reset() {
+	*x = PluginUISettings{}
+	mi := &file_plugin_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PluginUISettings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PluginUISettings) ProtoMessage() {}
+
+func (x *PluginUISettings) ProtoReflect() protoreflect.Message {
+	mi := &file_plugin_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PluginUISettings.ProtoReflect.Descriptor instead.
+func (*PluginUISettings) Descriptor() ([]byte, []int) {
+	return file_plugin_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *PluginUISettings) GetMenu() *PluginUIMenu {
+	if x != nil {
+		return x.Menu
+	}
+	return nil
+}
+
+func (x *PluginUISettings) GetSection() string {
+	if x != nil {
+		return x.Section
+	}
+	return ""
+}
+
+type PluginUIMenu struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Path          string                 `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
+	Position      string                 `protobuf:"bytes,3,opt,name=position,proto3" json:"position,omitempty"`
+	Icon          string                 `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PluginUIMenu) Reset() {
+	*x = PluginUIMenu{}
+	mi := &file_plugin_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PluginUIMenu) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PluginUIMenu) ProtoMessage() {}
+
+func (x *PluginUIMenu) ProtoReflect() protoreflect.Message {
+	mi := &file_plugin_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PluginUIMenu.ProtoReflect.Descriptor instead.
+func (*PluginUIMenu) Descriptor() ([]byte, []int) {
+	return file_plugin_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *PluginUIMenu) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *PluginUIMenu) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *PluginUIMenu) GetPosition() string {
+	if x != nil {
+		return x.Position
+	}
+	return ""
+}
+
+func (x *PluginUIMenu) GetIcon() string {
+	if x != nil {
+		return x.Icon
 	}
 	return ""
 }
@@ -659,7 +868,7 @@ type ThirdPartyGraphQLSchemas struct {
 
 func (x *ThirdPartyGraphQLSchemas) Reset() {
 	*x = ThirdPartyGraphQLSchemas{}
-	mi := &file_plugin_proto_msgTypes[4]
+	mi := &file_plugin_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -671,7 +880,7 @@ func (x *ThirdPartyGraphQLSchemas) String() string {
 func (*ThirdPartyGraphQLSchemas) ProtoMessage() {}
 
 func (x *ThirdPartyGraphQLSchemas) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[4]
+	mi := &file_plugin_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -684,7 +893,7 @@ func (x *ThirdPartyGraphQLSchemas) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ThirdPartyGraphQLSchemas.ProtoReflect.Descriptor instead.
 func (*ThirdPartyGraphQLSchemas) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{4}
+	return file_plugin_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ThirdPartyGraphQLSchemas) GetQueries() *structpb.Struct {
@@ -722,7 +931,7 @@ type ThirdPartyRESTApi struct {
 
 func (x *ThirdPartyRESTApi) Reset() {
 	*x = ThirdPartyRESTApi{}
-	mi := &file_plugin_proto_msgTypes[5]
+	mi := &file_plugin_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -734,7 +943,7 @@ func (x *ThirdPartyRESTApi) String() string {
 func (*ThirdPartyRESTApi) ProtoMessage() {}
 
 func (x *ThirdPartyRESTApi) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[5]
+	mi := &file_plugin_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -747,7 +956,7 @@ func (x *ThirdPartyRESTApi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ThirdPartyRESTApi.ProtoReflect.Descriptor instead.
 func (*ThirdPartyRESTApi) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{5}
+	return file_plugin_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ThirdPartyRESTApi) GetMethod() string {
@@ -799,7 +1008,7 @@ type PluginProject struct {
 
 func (x *PluginProject) Reset() {
 	*x = PluginProject{}
-	mi := &file_plugin_proto_msgTypes[6]
+	mi := &file_plugin_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -811,7 +1020,7 @@ func (x *PluginProject) String() string {
 func (*PluginProject) ProtoMessage() {}
 
 func (x *PluginProject) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[6]
+	mi := &file_plugin_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -824,7 +1033,7 @@ func (x *PluginProject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginProject.ProtoReflect.Descriptor instead.
 func (*PluginProject) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{6}
+	return file_plugin_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PluginProject) GetId() string {
@@ -883,7 +1092,7 @@ type AuditData struct {
 
 func (x *AuditData) Reset() {
 	*x = AuditData{}
-	mi := &file_plugin_proto_msgTypes[7]
+	mi := &file_plugin_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -895,7 +1104,7 @@ func (x *AuditData) String() string {
 func (*AuditData) ProtoMessage() {}
 
 func (x *AuditData) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[7]
+	mi := &file_plugin_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -908,7 +1117,7 @@ func (x *AuditData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuditData.ProtoReflect.Descriptor instead.
 func (*AuditData) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{7}
+	return file_plugin_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AuditData) GetResource() string {
@@ -963,7 +1172,7 @@ type InitRequest struct {
 
 func (x *InitRequest) Reset() {
 	*x = InitRequest{}
-	mi := &file_plugin_proto_msgTypes[8]
+	mi := &file_plugin_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -975,7 +1184,7 @@ func (x *InitRequest) String() string {
 func (*InitRequest) ProtoMessage() {}
 
 func (x *InitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[8]
+	mi := &file_plugin_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -988,7 +1197,7 @@ func (x *InitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitRequest.ProtoReflect.Descriptor instead.
 func (*InitRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{8}
+	return file_plugin_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *InitRequest) GetEnvVars() []*EnvVariable {
@@ -1008,7 +1217,7 @@ type InitResponse struct {
 
 func (x *InitResponse) Reset() {
 	*x = InitResponse{}
-	mi := &file_plugin_proto_msgTypes[9]
+	mi := &file_plugin_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1020,7 +1229,7 @@ func (x *InitResponse) String() string {
 func (*InitResponse) ProtoMessage() {}
 
 func (x *InitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[9]
+	mi := &file_plugin_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1033,7 +1242,7 @@ func (x *InitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitResponse.ProtoReflect.Descriptor instead.
 func (*InitResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{9}
+	return file_plugin_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *InitResponse) GetSuccess() bool {
@@ -1058,7 +1267,7 @@ type MigrationRequest struct {
 
 func (x *MigrationRequest) Reset() {
 	*x = MigrationRequest{}
-	mi := &file_plugin_proto_msgTypes[10]
+	mi := &file_plugin_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1070,7 +1279,7 @@ func (x *MigrationRequest) String() string {
 func (*MigrationRequest) ProtoMessage() {}
 
 func (x *MigrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[10]
+	mi := &file_plugin_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1083,7 +1292,7 @@ func (x *MigrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MigrationRequest.ProtoReflect.Descriptor instead.
 func (*MigrationRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{10}
+	return file_plugin_proto_rawDescGZIP(), []int{14}
 }
 
 type MigrationResponse struct {
@@ -1096,7 +1305,7 @@ type MigrationResponse struct {
 
 func (x *MigrationResponse) Reset() {
 	*x = MigrationResponse{}
-	mi := &file_plugin_proto_msgTypes[11]
+	mi := &file_plugin_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1108,7 +1317,7 @@ func (x *MigrationResponse) String() string {
 func (*MigrationResponse) ProtoMessage() {}
 
 func (x *MigrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[11]
+	mi := &file_plugin_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1121,7 +1330,7 @@ func (x *MigrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MigrationResponse.ProtoReflect.Descriptor instead.
 func (*MigrationResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{11}
+	return file_plugin_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *MigrationResponse) GetSuccess() bool {
@@ -1146,7 +1355,7 @@ type SchemaRegisterRequest struct {
 
 func (x *SchemaRegisterRequest) Reset() {
 	*x = SchemaRegisterRequest{}
-	mi := &file_plugin_proto_msgTypes[12]
+	mi := &file_plugin_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1158,7 +1367,7 @@ func (x *SchemaRegisterRequest) String() string {
 func (*SchemaRegisterRequest) ProtoMessage() {}
 
 func (x *SchemaRegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[12]
+	mi := &file_plugin_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1171,7 +1380,7 @@ func (x *SchemaRegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchemaRegisterRequest.ProtoReflect.Descriptor instead.
 func (*SchemaRegisterRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{12}
+	return file_plugin_proto_rawDescGZIP(), []int{16}
 }
 
 type SchemaRegisterResponse struct {
@@ -1183,7 +1392,7 @@ type SchemaRegisterResponse struct {
 
 func (x *SchemaRegisterResponse) Reset() {
 	*x = SchemaRegisterResponse{}
-	mi := &file_plugin_proto_msgTypes[13]
+	mi := &file_plugin_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1195,7 +1404,7 @@ func (x *SchemaRegisterResponse) String() string {
 func (*SchemaRegisterResponse) ProtoMessage() {}
 
 func (x *SchemaRegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[13]
+	mi := &file_plugin_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1208,7 +1417,7 @@ func (x *SchemaRegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchemaRegisterResponse.ProtoReflect.Descriptor instead.
 func (*SchemaRegisterResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{13}
+	return file_plugin_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SchemaRegisterResponse) GetSchema() *ThirdPartyGraphQLSchemas {
@@ -1226,7 +1435,7 @@ type RESTApiRegisterRequest struct {
 
 func (x *RESTApiRegisterRequest) Reset() {
 	*x = RESTApiRegisterRequest{}
-	mi := &file_plugin_proto_msgTypes[14]
+	mi := &file_plugin_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1238,7 +1447,7 @@ func (x *RESTApiRegisterRequest) String() string {
 func (*RESTApiRegisterRequest) ProtoMessage() {}
 
 func (x *RESTApiRegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[14]
+	mi := &file_plugin_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1251,7 +1460,7 @@ func (x *RESTApiRegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApiRegisterRequest.ProtoReflect.Descriptor instead.
 func (*RESTApiRegisterRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{14}
+	return file_plugin_proto_rawDescGZIP(), []int{18}
 }
 
 type RESTApiRegisterResponse struct {
@@ -1263,7 +1472,7 @@ type RESTApiRegisterResponse struct {
 
 func (x *RESTApiRegisterResponse) Reset() {
 	*x = RESTApiRegisterResponse{}
-	mi := &file_plugin_proto_msgTypes[15]
+	mi := &file_plugin_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1275,7 +1484,7 @@ func (x *RESTApiRegisterResponse) String() string {
 func (*RESTApiRegisterResponse) ProtoMessage() {}
 
 func (x *RESTApiRegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[15]
+	mi := &file_plugin_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1288,7 +1497,7 @@ func (x *RESTApiRegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApiRegisterResponse.ProtoReflect.Descriptor instead.
 func (*RESTApiRegisterResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{15}
+	return file_plugin_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *RESTApiRegisterResponse) GetApis() []*ThirdPartyRESTApi {
@@ -1306,7 +1515,7 @@ type GetVersionRequest struct {
 
 func (x *GetVersionRequest) Reset() {
 	*x = GetVersionRequest{}
-	mi := &file_plugin_proto_msgTypes[16]
+	mi := &file_plugin_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1318,7 +1527,7 @@ func (x *GetVersionRequest) String() string {
 func (*GetVersionRequest) ProtoMessage() {}
 
 func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[16]
+	mi := &file_plugin_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,7 +1540,7 @@ func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVersionRequest.ProtoReflect.Descriptor instead.
 func (*GetVersionRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{16}
+	return file_plugin_proto_rawDescGZIP(), []int{20}
 }
 
 type GetVersionResponse struct {
@@ -1343,7 +1552,7 @@ type GetVersionResponse struct {
 
 func (x *GetVersionResponse) Reset() {
 	*x = GetVersionResponse{}
-	mi := &file_plugin_proto_msgTypes[17]
+	mi := &file_plugin_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1355,7 +1564,7 @@ func (x *GetVersionResponse) String() string {
 func (*GetVersionResponse) ProtoMessage() {}
 
 func (x *GetVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[17]
+	mi := &file_plugin_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1368,7 +1577,7 @@ func (x *GetVersionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVersionResponse.ProtoReflect.Descriptor instead.
 func (*GetVersionResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{17}
+	return file_plugin_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetVersionResponse) GetVersion() string {
@@ -1390,7 +1599,7 @@ type ExecuteRequest struct {
 
 func (x *ExecuteRequest) Reset() {
 	*x = ExecuteRequest{}
-	mi := &file_plugin_proto_msgTypes[18]
+	mi := &file_plugin_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1402,7 +1611,7 @@ func (x *ExecuteRequest) String() string {
 func (*ExecuteRequest) ProtoMessage() {}
 
 func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[18]
+	mi := &file_plugin_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1415,7 +1624,7 @@ func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteRequest.ProtoReflect.Descriptor instead.
 func (*ExecuteRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{18}
+	return file_plugin_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ExecuteRequest) GetFunctionName() string {
@@ -1457,7 +1666,7 @@ type ExecuteResponse struct {
 
 func (x *ExecuteResponse) Reset() {
 	*x = ExecuteResponse{}
-	mi := &file_plugin_proto_msgTypes[19]
+	mi := &file_plugin_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1469,7 +1678,7 @@ func (x *ExecuteResponse) String() string {
 func (*ExecuteResponse) ProtoMessage() {}
 
 func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[19]
+	mi := &file_plugin_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1482,7 +1691,7 @@ func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteResponse.ProtoReflect.Descriptor instead.
 func (*ExecuteResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{19}
+	return file_plugin_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ExecuteResponse) GetSuccess() bool {
@@ -1517,7 +1726,7 @@ type GenerateTenantTokenRequest struct {
 
 func (x *GenerateTenantTokenRequest) Reset() {
 	*x = GenerateTenantTokenRequest{}
-	mi := &file_plugin_proto_msgTypes[20]
+	mi := &file_plugin_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1529,7 +1738,7 @@ func (x *GenerateTenantTokenRequest) String() string {
 func (*GenerateTenantTokenRequest) ProtoMessage() {}
 
 func (x *GenerateTenantTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[20]
+	mi := &file_plugin_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1542,7 +1751,7 @@ func (x *GenerateTenantTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateTenantTokenRequest.ProtoReflect.Descriptor instead.
 func (*GenerateTenantTokenRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{20}
+	return file_plugin_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GenerateTenantTokenRequest) GetToken() string {
@@ -1568,7 +1777,7 @@ type GenerateTenantTokenResponse struct {
 
 func (x *GenerateTenantTokenResponse) Reset() {
 	*x = GenerateTenantTokenResponse{}
-	mi := &file_plugin_proto_msgTypes[21]
+	mi := &file_plugin_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1580,7 +1789,7 @@ func (x *GenerateTenantTokenResponse) String() string {
 func (*GenerateTenantTokenResponse) ProtoMessage() {}
 
 func (x *GenerateTenantTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[21]
+	mi := &file_plugin_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1593,7 +1802,7 @@ func (x *GenerateTenantTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateTenantTokenResponse.ProtoReflect.Descriptor instead.
 func (*GenerateTenantTokenResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{21}
+	return file_plugin_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GenerateTenantTokenResponse) GetToken() string {
@@ -1612,7 +1821,7 @@ type GetProjectDetailsRequest struct {
 
 func (x *GetProjectDetailsRequest) Reset() {
 	*x = GetProjectDetailsRequest{}
-	mi := &file_plugin_proto_msgTypes[22]
+	mi := &file_plugin_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1624,7 +1833,7 @@ func (x *GetProjectDetailsRequest) String() string {
 func (*GetProjectDetailsRequest) ProtoMessage() {}
 
 func (x *GetProjectDetailsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[22]
+	mi := &file_plugin_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1637,7 +1846,7 @@ func (x *GetProjectDetailsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProjectDetailsRequest.ProtoReflect.Descriptor instead.
 func (*GetProjectDetailsRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{22}
+	return file_plugin_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *GetProjectDetailsRequest) GetProjectId() string {
@@ -1656,7 +1865,7 @@ type GetProjectDetailsResponse struct {
 
 func (x *GetProjectDetailsResponse) Reset() {
 	*x = GetProjectDetailsResponse{}
-	mi := &file_plugin_proto_msgTypes[23]
+	mi := &file_plugin_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1668,7 +1877,7 @@ func (x *GetProjectDetailsResponse) String() string {
 func (*GetProjectDetailsResponse) ProtoMessage() {}
 
 func (x *GetProjectDetailsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[23]
+	mi := &file_plugin_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1681,7 +1890,7 @@ func (x *GetProjectDetailsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProjectDetailsResponse.ProtoReflect.Descriptor instead.
 func (*GetProjectDetailsResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{23}
+	return file_plugin_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetProjectDetailsResponse) GetProject() *PluginProject {
@@ -1702,7 +1911,7 @@ type GetSingleResourceRequest struct {
 
 func (x *GetSingleResourceRequest) Reset() {
 	*x = GetSingleResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[24]
+	mi := &file_plugin_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1714,7 +1923,7 @@ func (x *GetSingleResourceRequest) String() string {
 func (*GetSingleResourceRequest) ProtoMessage() {}
 
 func (x *GetSingleResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[24]
+	mi := &file_plugin_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1727,7 +1936,7 @@ func (x *GetSingleResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSingleResourceRequest.ProtoReflect.Descriptor instead.
 func (*GetSingleResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{24}
+	return file_plugin_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *GetSingleResourceRequest) GetModel() string {
@@ -1760,7 +1969,7 @@ type GetSingleResourceResponse struct {
 
 func (x *GetSingleResourceResponse) Reset() {
 	*x = GetSingleResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[25]
+	mi := &file_plugin_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1772,7 +1981,7 @@ func (x *GetSingleResourceResponse) String() string {
 func (*GetSingleResourceResponse) ProtoMessage() {}
 
 func (x *GetSingleResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[25]
+	mi := &file_plugin_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1785,7 +1994,7 @@ func (x *GetSingleResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSingleResourceResponse.ProtoReflect.Descriptor instead.
 func (*GetSingleResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{25}
+	return file_plugin_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GetSingleResourceResponse) GetResource() *anypb.Any {
@@ -1806,7 +2015,7 @@ type SearchResourcesRequest struct {
 
 func (x *SearchResourcesRequest) Reset() {
 	*x = SearchResourcesRequest{}
-	mi := &file_plugin_proto_msgTypes[26]
+	mi := &file_plugin_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1818,7 +2027,7 @@ func (x *SearchResourcesRequest) String() string {
 func (*SearchResourcesRequest) ProtoMessage() {}
 
 func (x *SearchResourcesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[26]
+	mi := &file_plugin_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1831,7 +2040,7 @@ func (x *SearchResourcesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchResourcesRequest.ProtoReflect.Descriptor instead.
 func (*SearchResourcesRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{26}
+	return file_plugin_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *SearchResourcesRequest) GetModel() string {
@@ -1864,7 +2073,7 @@ type SearchResourcesResponse struct {
 
 func (x *SearchResourcesResponse) Reset() {
 	*x = SearchResourcesResponse{}
-	mi := &file_plugin_proto_msgTypes[27]
+	mi := &file_plugin_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1876,7 +2085,7 @@ func (x *SearchResourcesResponse) String() string {
 func (*SearchResourcesResponse) ProtoMessage() {}
 
 func (x *SearchResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[27]
+	mi := &file_plugin_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1889,7 +2098,7 @@ func (x *SearchResourcesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchResourcesResponse.ProtoReflect.Descriptor instead.
 func (*SearchResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{27}
+	return file_plugin_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *SearchResourcesResponse) GetResources() *anypb.Any {
@@ -1909,7 +2118,7 @@ type GetRelationDocumentsRequest struct {
 
 func (x *GetRelationDocumentsRequest) Reset() {
 	*x = GetRelationDocumentsRequest{}
-	mi := &file_plugin_proto_msgTypes[28]
+	mi := &file_plugin_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1921,7 +2130,7 @@ func (x *GetRelationDocumentsRequest) String() string {
 func (*GetRelationDocumentsRequest) ProtoMessage() {}
 
 func (x *GetRelationDocumentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[28]
+	mi := &file_plugin_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1934,7 +2143,7 @@ func (x *GetRelationDocumentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRelationDocumentsRequest.ProtoReflect.Descriptor instead.
 func (*GetRelationDocumentsRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{28}
+	return file_plugin_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetRelationDocumentsRequest) GetId() string {
@@ -1960,7 +2169,7 @@ type GetRelationDocumentsResponse struct {
 
 func (x *GetRelationDocumentsResponse) Reset() {
 	*x = GetRelationDocumentsResponse{}
-	mi := &file_plugin_proto_msgTypes[29]
+	mi := &file_plugin_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1972,7 +2181,7 @@ func (x *GetRelationDocumentsResponse) String() string {
 func (*GetRelationDocumentsResponse) ProtoMessage() {}
 
 func (x *GetRelationDocumentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[29]
+	mi := &file_plugin_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1985,7 +2194,7 @@ func (x *GetRelationDocumentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRelationDocumentsResponse.ProtoReflect.Descriptor instead.
 func (*GetRelationDocumentsResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{29}
+	return file_plugin_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetRelationDocumentsResponse) GetDocuments() *anypb.Any {
@@ -2006,7 +2215,7 @@ type CreateNewResourceRequest struct {
 
 func (x *CreateNewResourceRequest) Reset() {
 	*x = CreateNewResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[30]
+	mi := &file_plugin_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2018,7 +2227,7 @@ func (x *CreateNewResourceRequest) String() string {
 func (*CreateNewResourceRequest) ProtoMessage() {}
 
 func (x *CreateNewResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[30]
+	mi := &file_plugin_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2031,7 +2240,7 @@ func (x *CreateNewResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewResourceRequest.ProtoReflect.Descriptor instead.
 func (*CreateNewResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{30}
+	return file_plugin_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateNewResourceRequest) GetModel() string {
@@ -2064,7 +2273,7 @@ type CreateNewResourceResponse struct {
 
 func (x *CreateNewResourceResponse) Reset() {
 	*x = CreateNewResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[31]
+	mi := &file_plugin_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2076,7 +2285,7 @@ func (x *CreateNewResourceResponse) String() string {
 func (*CreateNewResourceResponse) ProtoMessage() {}
 
 func (x *CreateNewResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[31]
+	mi := &file_plugin_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2089,7 +2298,7 @@ func (x *CreateNewResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewResourceResponse.ProtoReflect.Descriptor instead.
 func (*CreateNewResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{31}
+	return file_plugin_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CreateNewResourceResponse) GetResource() *anypb.Any {
@@ -2113,7 +2322,7 @@ type UpdateResourceRequest struct {
 
 func (x *UpdateResourceRequest) Reset() {
 	*x = UpdateResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[32]
+	mi := &file_plugin_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2125,7 +2334,7 @@ func (x *UpdateResourceRequest) String() string {
 func (*UpdateResourceRequest) ProtoMessage() {}
 
 func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[32]
+	mi := &file_plugin_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2138,7 +2347,7 @@ func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{32}
+	return file_plugin_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *UpdateResourceRequest) GetModel() string {
@@ -2192,7 +2401,7 @@ type UpdateResourceResponse struct {
 
 func (x *UpdateResourceResponse) Reset() {
 	*x = UpdateResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[33]
+	mi := &file_plugin_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2204,7 +2413,7 @@ func (x *UpdateResourceResponse) String() string {
 func (*UpdateResourceResponse) ProtoMessage() {}
 
 func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[33]
+	mi := &file_plugin_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2217,7 +2426,7 @@ func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{33}
+	return file_plugin_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *UpdateResourceResponse) GetResource() *anypb.Any {
@@ -2237,7 +2446,7 @@ type DeleteResourceRequest struct {
 
 func (x *DeleteResourceRequest) Reset() {
 	*x = DeleteResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[34]
+	mi := &file_plugin_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2249,7 +2458,7 @@ func (x *DeleteResourceRequest) String() string {
 func (*DeleteResourceRequest) ProtoMessage() {}
 
 func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[34]
+	mi := &file_plugin_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2262,7 +2471,7 @@ func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{34}
+	return file_plugin_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *DeleteResourceRequest) GetModel() string {
@@ -2289,7 +2498,7 @@ type DeleteResourceResponse struct {
 
 func (x *DeleteResourceResponse) Reset() {
 	*x = DeleteResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[35]
+	mi := &file_plugin_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2301,7 +2510,7 @@ func (x *DeleteResourceResponse) String() string {
 func (*DeleteResourceResponse) ProtoMessage() {}
 
 func (x *DeleteResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[35]
+	mi := &file_plugin_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2314,7 +2523,7 @@ func (x *DeleteResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{35}
+	return file_plugin_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *DeleteResourceResponse) GetSuccess() bool {
@@ -2341,7 +2550,7 @@ type DebugRequest struct {
 
 func (x *DebugRequest) Reset() {
 	*x = DebugRequest{}
-	mi := &file_plugin_proto_msgTypes[36]
+	mi := &file_plugin_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2353,7 +2562,7 @@ func (x *DebugRequest) String() string {
 func (*DebugRequest) ProtoMessage() {}
 
 func (x *DebugRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[36]
+	mi := &file_plugin_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2366,7 +2575,7 @@ func (x *DebugRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DebugRequest.ProtoReflect.Descriptor instead.
 func (*DebugRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{36}
+	return file_plugin_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DebugRequest) GetStage() string {
@@ -2392,7 +2601,7 @@ type DebugResponse struct {
 
 func (x *DebugResponse) Reset() {
 	*x = DebugResponse{}
-	mi := &file_plugin_proto_msgTypes[37]
+	mi := &file_plugin_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2404,7 +2613,7 @@ func (x *DebugResponse) String() string {
 func (*DebugResponse) ProtoMessage() {}
 
 func (x *DebugResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[37]
+	mi := &file_plugin_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2417,7 +2626,7 @@ func (x *DebugResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DebugResponse.ProtoReflect.Descriptor instead.
 func (*DebugResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{37}
+	return file_plugin_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DebugResponse) GetResult() *anypb.Any {
@@ -2440,7 +2649,7 @@ const file_plugin_proto_rawDesc = "" +
 	"\x18HashiCorpHandshakeConfig\x12)\n" +
 	"\x10protocol_version\x18\x01 \x01(\rR\x0fprotocolVersion\x12(\n" +
 	"\x10magic_cookie_key\x18\x02 \x01(\tR\x0emagicCookieKey\x12,\n" +
-	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\x97\a\n" +
+	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\xc2\a\n" +
 	"\rPluginDetails\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -2448,29 +2657,47 @@ const file_plugin_proto_rawDesc = "" +
 	"\x06serial\x18\x04 \x01(\x03R\x06serial\x12\x18\n" +
 	"\aversion\x18\x05 \x01(\tR\aversion\x12 \n" +
 	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04tags\x18\a \x03(\tR\x04tags\x12/\n" +
-	"\x04type\x18\b \x01(\x0e2\x1b.apito.plugin.v1.PluginTypeR\x04type\x12\x12\n" +
-	"\x04role\x18\t \x01(\tR\x04role\x127\n" +
-	"\benv_vars\x18\n" +
-	" \x03(\v2\x1c.apito.plugin.v1.EnvVariableR\aenvVars\x12+\n" +
-	"\x11exported_variable\x18\v \x01(\tR\x10exportedVariable\x12\x16\n" +
-	"\x06enable\x18\f \x01(\bR\x06enable\x12\x14\n" +
-	"\x05debug\x18\r \x01(\bR\x05debug\x12%\n" +
-	"\x0erepository_url\x18\x0e \x01(\tR\rrepositoryUrl\x12\x16\n" +
-	"\x06branch\x18\x0f \x01(\tR\x06branch\x12\x16\n" +
-	"\x06author\x18\x10 \x01(\tR\x06author\x12B\n" +
-	"\vload_status\x18\x11 \x01(\x0e2!.apito.plugin.v1.PluginLoadStatusR\n" +
+	"\x04tags\x18\a \x03(\tR\x04tags\x127\n" +
+	"\benv_vars\x18\b \x03(\v2\x1c.apito.plugin.v1.EnvVariableR\aenvVars\x12+\n" +
+	"\x11exported_variable\x18\t \x01(\tR\x10exportedVariable\x12\x16\n" +
+	"\x06enable\x18\n" +
+	" \x01(\bR\x06enable\x12\x14\n" +
+	"\x05debug\x18\v \x01(\bR\x05debug\x12%\n" +
+	"\x0erepository_url\x18\f \x01(\tR\rrepositoryUrl\x12\x16\n" +
+	"\x06branch\x18\r \x01(\tR\x06branch\x12\x16\n" +
+	"\x06author\x18\x0e \x01(\tR\x06author\x12B\n" +
+	"\vload_status\x18\x0f \x01(\x0e2!.apito.plugin.v1.PluginLoadStatusR\n" +
 	"loadStatus\x12N\n" +
-	"\x0factivate_status\x18\x12 \x01(\x0e2%.apito.plugin.v1.PluginActivateStatusR\x0eactivateStatus\x12.\n" +
-	"\x13belongs_to_projects\x18\x13 \x03(\tR\x11belongsToProjects\x12\x1f\n" +
-	"\vbinary_path\x18\x14 \x01(\tR\n" +
+	"\x0factivate_status\x18\x10 \x01(\x0e2%.apito.plugin.v1.PluginActivateStatusR\x0eactivateStatus\x12.\n" +
+	"\x13enable_for_projects\x18\x11 \x03(\tR\x11enableForProjects\x12;\n" +
+	"\blanguage\x18\x12 \x01(\x0e2\x1f.apito.plugin.v1.PluginLanguageR\blanguage\x12<\n" +
+	"\tui_config\x18\x13 \x01(\v2\x1f.apito.plugin.v1.PluginUIConfigR\buiConfig\x12<\n" +
+	"\x1aregistered_graphql_schemas\x18\x14 \x03(\tR\x18registeredGraphqlSchemas\x120\n" +
+	"\x14registered_rest_apis\x18\x15 \x03(\tR\x12registeredRestApis\x12\x1f\n" +
+	"\vbinary_path\x18\x16 \x01(\tR\n" +
 	"binaryPath\x12T\n" +
-	"\x10handshake_config\x18\x15 \x01(\v2).apito.plugin.v1.HashiCorpHandshakeConfigR\x0fhandshakeConfig\x12;\n" +
-	"\blanguage\x18\x16 \x01(\x0e2\x1f.apito.plugin.v1.PluginLanguageR\blanguage\x12<\n" +
-	"\tui_config\x18\x17 \x01(\v2\x1f.apito.plugin.v1.PluginUIConfigR\buiConfig\"/\n" +
-	"\x0ePluginUIConfig\x12\x1d\n" +
-	"\n" +
-	"entry_path\x18\x01 \x01(\tR\tentryPath\"\xc3\x01\n" +
+	"\x10handshake_config\x18\x17 \x01(\v2).apito.plugin.v1.HashiCorpHandshakeConfigR\x0fhandshakeConfig\"\xcc\x01\n" +
+	"\x0ePluginUIConfig\x12\x16\n" +
+	"\x06enable\x18\x01 \x01(\bR\x06enable\x12\x1b\n" +
+	"\tdist_path\x18\x02 \x01(\tR\bdistPath\x12F\n" +
+	"\vintegration\x18\x03 \x01(\v2$.apito.plugin.v1.PluginUIIntegrationR\vintegration\x12=\n" +
+	"\bsettings\x18\x04 \x03(\v2!.apito.plugin.v1.PluginUISettingsR\bsettings\"\x8d\x01\n" +
+	"\x13PluginUIIntegration\x12>\n" +
+	"\vheader_menu\x18\x01 \x01(\v2\x1d.apito.plugin.v1.PluginUIMenuR\n" +
+	"headerMenu\x126\n" +
+	"\x06routes\x18\x02 \x03(\v2\x1e.apito.plugin.v1.PluginUIRouteR\x06routes\"W\n" +
+	"\rPluginUIRoute\x12\x12\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1c\n" +
+	"\tcomponent\x18\x02 \x01(\tR\tcomponent\x12\x14\n" +
+	"\x05title\x18\x03 \x01(\tR\x05title\"_\n" +
+	"\x10PluginUISettings\x121\n" +
+	"\x04menu\x18\x01 \x01(\v2\x1d.apito.plugin.v1.PluginUIMenuR\x04menu\x12\x18\n" +
+	"\asection\x18\x02 \x01(\tR\asection\"h\n" +
+	"\fPluginUIMenu\x12\x14\n" +
+	"\x05label\x18\x01 \x01(\tR\x05label\x12\x12\n" +
+	"\x04path\x18\x02 \x01(\tR\x04path\x12\x1a\n" +
+	"\bposition\x18\x03 \x01(\tR\bposition\x12\x12\n" +
+	"\x04icon\x18\x04 \x01(\tR\x04icon\"\xc3\x01\n" +
 	"\x18ThirdPartyGraphQLSchemas\x121\n" +
 	"\aqueries\x18\x01 \x01(\v2\x17.google.protobuf.StructR\aqueries\x125\n" +
 	"\tmutations\x18\x02 \x01(\v2\x17.google.protobuf.StructR\tmutations\x12=\n" +
@@ -2582,11 +2809,7 @@ const file_plugin_proto_rawDesc = "" +
 	"\x05stage\x18\x01 \x01(\tR\x05stage\x12(\n" +
 	"\x04data\x18\x02 \x03(\v2\x14.google.protobuf.AnyR\x04data\"=\n" +
 	"\rDebugResponse\x12,\n" +
-	"\x06result\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x06result*=\n" +
-	"\n" +
-	"PluginType\x12\x16\n" +
-	"\x12PLUGIN_TYPE_SYSTEM\x10\x00\x12\x17\n" +
-	"\x13PLUGIN_TYPE_PROJECT\x10\x01*\xdf\x01\n" +
+	"\x06result\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x06result*\xdf\x01\n" +
 	"\x10PluginLoadStatus\x12$\n" +
 	" PLUGIN_LOAD_STATUS_NOT_INSTALLED\x10\x00\x12 \n" +
 	"\x1cPLUGIN_LOAD_STATUS_INSTALLED\x10\x01\x12 \n" +
@@ -2642,127 +2865,134 @@ func file_plugin_proto_rawDescGZIP() []byte {
 	return file_plugin_proto_rawDescData
 }
 
-var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
+var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_plugin_proto_goTypes = []any{
-	(PluginType)(0),                      // 0: apito.plugin.v1.PluginType
-	(PluginLoadStatus)(0),                // 1: apito.plugin.v1.PluginLoadStatus
-	(PluginActivateStatus)(0),            // 2: apito.plugin.v1.PluginActivateStatus
-	(PluginLanguage)(0),                  // 3: apito.plugin.v1.PluginLanguage
-	(*EnvVariable)(nil),                  // 4: apito.plugin.v1.EnvVariable
-	(*HashiCorpHandshakeConfig)(nil),     // 5: apito.plugin.v1.HashiCorpHandshakeConfig
-	(*PluginDetails)(nil),                // 6: apito.plugin.v1.PluginDetails
-	(*PluginUIConfig)(nil),               // 7: apito.plugin.v1.PluginUIConfig
-	(*ThirdPartyGraphQLSchemas)(nil),     // 8: apito.plugin.v1.ThirdPartyGraphQLSchemas
-	(*ThirdPartyRESTApi)(nil),            // 9: apito.plugin.v1.ThirdPartyRESTApi
-	(*PluginProject)(nil),                // 10: apito.plugin.v1.PluginProject
-	(*AuditData)(nil),                    // 11: apito.plugin.v1.AuditData
-	(*InitRequest)(nil),                  // 12: apito.plugin.v1.InitRequest
-	(*InitResponse)(nil),                 // 13: apito.plugin.v1.InitResponse
-	(*MigrationRequest)(nil),             // 14: apito.plugin.v1.MigrationRequest
-	(*MigrationResponse)(nil),            // 15: apito.plugin.v1.MigrationResponse
-	(*SchemaRegisterRequest)(nil),        // 16: apito.plugin.v1.SchemaRegisterRequest
-	(*SchemaRegisterResponse)(nil),       // 17: apito.plugin.v1.SchemaRegisterResponse
-	(*RESTApiRegisterRequest)(nil),       // 18: apito.plugin.v1.RESTApiRegisterRequest
-	(*RESTApiRegisterResponse)(nil),      // 19: apito.plugin.v1.RESTApiRegisterResponse
-	(*GetVersionRequest)(nil),            // 20: apito.plugin.v1.GetVersionRequest
-	(*GetVersionResponse)(nil),           // 21: apito.plugin.v1.GetVersionResponse
-	(*ExecuteRequest)(nil),               // 22: apito.plugin.v1.ExecuteRequest
-	(*ExecuteResponse)(nil),              // 23: apito.plugin.v1.ExecuteResponse
-	(*GenerateTenantTokenRequest)(nil),   // 24: apito.plugin.v1.GenerateTenantTokenRequest
-	(*GenerateTenantTokenResponse)(nil),  // 25: apito.plugin.v1.GenerateTenantTokenResponse
-	(*GetProjectDetailsRequest)(nil),     // 26: apito.plugin.v1.GetProjectDetailsRequest
-	(*GetProjectDetailsResponse)(nil),    // 27: apito.plugin.v1.GetProjectDetailsResponse
-	(*GetSingleResourceRequest)(nil),     // 28: apito.plugin.v1.GetSingleResourceRequest
-	(*GetSingleResourceResponse)(nil),    // 29: apito.plugin.v1.GetSingleResourceResponse
-	(*SearchResourcesRequest)(nil),       // 30: apito.plugin.v1.SearchResourcesRequest
-	(*SearchResourcesResponse)(nil),      // 31: apito.plugin.v1.SearchResourcesResponse
-	(*GetRelationDocumentsRequest)(nil),  // 32: apito.plugin.v1.GetRelationDocumentsRequest
-	(*GetRelationDocumentsResponse)(nil), // 33: apito.plugin.v1.GetRelationDocumentsResponse
-	(*CreateNewResourceRequest)(nil),     // 34: apito.plugin.v1.CreateNewResourceRequest
-	(*CreateNewResourceResponse)(nil),    // 35: apito.plugin.v1.CreateNewResourceResponse
-	(*UpdateResourceRequest)(nil),        // 36: apito.plugin.v1.UpdateResourceRequest
-	(*UpdateResourceResponse)(nil),       // 37: apito.plugin.v1.UpdateResourceResponse
-	(*DeleteResourceRequest)(nil),        // 38: apito.plugin.v1.DeleteResourceRequest
-	(*DeleteResourceResponse)(nil),       // 39: apito.plugin.v1.DeleteResourceResponse
-	(*DebugRequest)(nil),                 // 40: apito.plugin.v1.DebugRequest
-	(*DebugResponse)(nil),                // 41: apito.plugin.v1.DebugResponse
-	(*structpb.Struct)(nil),              // 42: google.protobuf.Struct
-	(*anypb.Any)(nil),                    // 43: google.protobuf.Any
+	(PluginLoadStatus)(0),                // 0: apito.plugin.v1.PluginLoadStatus
+	(PluginActivateStatus)(0),            // 1: apito.plugin.v1.PluginActivateStatus
+	(PluginLanguage)(0),                  // 2: apito.plugin.v1.PluginLanguage
+	(*EnvVariable)(nil),                  // 3: apito.plugin.v1.EnvVariable
+	(*HashiCorpHandshakeConfig)(nil),     // 4: apito.plugin.v1.HashiCorpHandshakeConfig
+	(*PluginDetails)(nil),                // 5: apito.plugin.v1.PluginDetails
+	(*PluginUIConfig)(nil),               // 6: apito.plugin.v1.PluginUIConfig
+	(*PluginUIIntegration)(nil),          // 7: apito.plugin.v1.PluginUIIntegration
+	(*PluginUIRoute)(nil),                // 8: apito.plugin.v1.PluginUIRoute
+	(*PluginUISettings)(nil),             // 9: apito.plugin.v1.PluginUISettings
+	(*PluginUIMenu)(nil),                 // 10: apito.plugin.v1.PluginUIMenu
+	(*ThirdPartyGraphQLSchemas)(nil),     // 11: apito.plugin.v1.ThirdPartyGraphQLSchemas
+	(*ThirdPartyRESTApi)(nil),            // 12: apito.plugin.v1.ThirdPartyRESTApi
+	(*PluginProject)(nil),                // 13: apito.plugin.v1.PluginProject
+	(*AuditData)(nil),                    // 14: apito.plugin.v1.AuditData
+	(*InitRequest)(nil),                  // 15: apito.plugin.v1.InitRequest
+	(*InitResponse)(nil),                 // 16: apito.plugin.v1.InitResponse
+	(*MigrationRequest)(nil),             // 17: apito.plugin.v1.MigrationRequest
+	(*MigrationResponse)(nil),            // 18: apito.plugin.v1.MigrationResponse
+	(*SchemaRegisterRequest)(nil),        // 19: apito.plugin.v1.SchemaRegisterRequest
+	(*SchemaRegisterResponse)(nil),       // 20: apito.plugin.v1.SchemaRegisterResponse
+	(*RESTApiRegisterRequest)(nil),       // 21: apito.plugin.v1.RESTApiRegisterRequest
+	(*RESTApiRegisterResponse)(nil),      // 22: apito.plugin.v1.RESTApiRegisterResponse
+	(*GetVersionRequest)(nil),            // 23: apito.plugin.v1.GetVersionRequest
+	(*GetVersionResponse)(nil),           // 24: apito.plugin.v1.GetVersionResponse
+	(*ExecuteRequest)(nil),               // 25: apito.plugin.v1.ExecuteRequest
+	(*ExecuteResponse)(nil),              // 26: apito.plugin.v1.ExecuteResponse
+	(*GenerateTenantTokenRequest)(nil),   // 27: apito.plugin.v1.GenerateTenantTokenRequest
+	(*GenerateTenantTokenResponse)(nil),  // 28: apito.plugin.v1.GenerateTenantTokenResponse
+	(*GetProjectDetailsRequest)(nil),     // 29: apito.plugin.v1.GetProjectDetailsRequest
+	(*GetProjectDetailsResponse)(nil),    // 30: apito.plugin.v1.GetProjectDetailsResponse
+	(*GetSingleResourceRequest)(nil),     // 31: apito.plugin.v1.GetSingleResourceRequest
+	(*GetSingleResourceResponse)(nil),    // 32: apito.plugin.v1.GetSingleResourceResponse
+	(*SearchResourcesRequest)(nil),       // 33: apito.plugin.v1.SearchResourcesRequest
+	(*SearchResourcesResponse)(nil),      // 34: apito.plugin.v1.SearchResourcesResponse
+	(*GetRelationDocumentsRequest)(nil),  // 35: apito.plugin.v1.GetRelationDocumentsRequest
+	(*GetRelationDocumentsResponse)(nil), // 36: apito.plugin.v1.GetRelationDocumentsResponse
+	(*CreateNewResourceRequest)(nil),     // 37: apito.plugin.v1.CreateNewResourceRequest
+	(*CreateNewResourceResponse)(nil),    // 38: apito.plugin.v1.CreateNewResourceResponse
+	(*UpdateResourceRequest)(nil),        // 39: apito.plugin.v1.UpdateResourceRequest
+	(*UpdateResourceResponse)(nil),       // 40: apito.plugin.v1.UpdateResourceResponse
+	(*DeleteResourceRequest)(nil),        // 41: apito.plugin.v1.DeleteResourceRequest
+	(*DeleteResourceResponse)(nil),       // 42: apito.plugin.v1.DeleteResourceResponse
+	(*DebugRequest)(nil),                 // 43: apito.plugin.v1.DebugRequest
+	(*DebugResponse)(nil),                // 44: apito.plugin.v1.DebugResponse
+	(*structpb.Struct)(nil),              // 45: google.protobuf.Struct
+	(*anypb.Any)(nil),                    // 46: google.protobuf.Any
 }
 var file_plugin_proto_depIdxs = []int32{
-	0,  // 0: apito.plugin.v1.PluginDetails.type:type_name -> apito.plugin.v1.PluginType
-	4,  // 1: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
-	1,  // 2: apito.plugin.v1.PluginDetails.load_status:type_name -> apito.plugin.v1.PluginLoadStatus
-	2,  // 3: apito.plugin.v1.PluginDetails.activate_status:type_name -> apito.plugin.v1.PluginActivateStatus
-	5,  // 4: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
-	3,  // 5: apito.plugin.v1.PluginDetails.language:type_name -> apito.plugin.v1.PluginLanguage
-	7,  // 6: apito.plugin.v1.PluginDetails.ui_config:type_name -> apito.plugin.v1.PluginUIConfig
-	42, // 7: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
-	42, // 8: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
-	42, // 9: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
-	42, // 10: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
-	42, // 11: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
-	42, // 12: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
-	42, // 13: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
-	42, // 14: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
-	42, // 15: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
-	4,  // 16: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
-	8,  // 17: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
-	9,  // 18: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
-	42, // 19: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
-	42, // 20: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
-	43, // 21: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
-	10, // 22: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
-	43, // 23: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
-	42, // 24: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
-	43, // 25: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
-	42, // 26: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
-	43, // 27: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
-	42, // 28: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
-	42, // 29: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
-	43, // 30: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
-	42, // 31: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
-	42, // 32: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
-	42, // 33: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
-	43, // 34: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
-	43, // 35: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
-	43, // 36: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
-	12, // 37: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
-	14, // 38: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
-	16, // 39: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
-	18, // 40: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
-	20, // 41: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
-	22, // 42: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
-	24, // 43: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
-	26, // 44: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
-	28, // 45: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
-	30, // 46: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
-	32, // 47: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
-	34, // 48: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
-	36, // 49: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
-	38, // 50: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
-	40, // 51: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
-	13, // 52: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
-	15, // 53: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
-	17, // 54: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
-	19, // 55: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
-	21, // 56: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
-	23, // 57: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
-	25, // 58: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
-	27, // 59: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
-	29, // 60: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
-	31, // 61: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
-	33, // 62: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
-	35, // 63: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
-	37, // 64: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
-	39, // 65: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
-	41, // 66: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
-	52, // [52:67] is the sub-list for method output_type
-	37, // [37:52] is the sub-list for method input_type
-	37, // [37:37] is the sub-list for extension type_name
-	37, // [37:37] is the sub-list for extension extendee
-	0,  // [0:37] is the sub-list for field type_name
+	3,  // 0: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	0,  // 1: apito.plugin.v1.PluginDetails.load_status:type_name -> apito.plugin.v1.PluginLoadStatus
+	1,  // 2: apito.plugin.v1.PluginDetails.activate_status:type_name -> apito.plugin.v1.PluginActivateStatus
+	2,  // 3: apito.plugin.v1.PluginDetails.language:type_name -> apito.plugin.v1.PluginLanguage
+	6,  // 4: apito.plugin.v1.PluginDetails.ui_config:type_name -> apito.plugin.v1.PluginUIConfig
+	4,  // 5: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
+	7,  // 6: apito.plugin.v1.PluginUIConfig.integration:type_name -> apito.plugin.v1.PluginUIIntegration
+	9,  // 7: apito.plugin.v1.PluginUIConfig.settings:type_name -> apito.plugin.v1.PluginUISettings
+	10, // 8: apito.plugin.v1.PluginUIIntegration.header_menu:type_name -> apito.plugin.v1.PluginUIMenu
+	8,  // 9: apito.plugin.v1.PluginUIIntegration.routes:type_name -> apito.plugin.v1.PluginUIRoute
+	10, // 10: apito.plugin.v1.PluginUISettings.menu:type_name -> apito.plugin.v1.PluginUIMenu
+	45, // 11: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
+	45, // 12: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
+	45, // 13: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
+	45, // 14: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
+	45, // 15: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
+	45, // 16: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
+	45, // 17: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
+	45, // 18: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
+	45, // 19: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
+	3,  // 20: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	11, // 21: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
+	12, // 22: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
+	45, // 23: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
+	45, // 24: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
+	46, // 25: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
+	13, // 26: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
+	46, // 27: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
+	45, // 28: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
+	46, // 29: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
+	45, // 30: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
+	46, // 31: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
+	45, // 32: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
+	45, // 33: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
+	46, // 34: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
+	45, // 35: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
+	45, // 36: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
+	45, // 37: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
+	46, // 38: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
+	46, // 39: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
+	46, // 40: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
+	15, // 41: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
+	17, // 42: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
+	19, // 43: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
+	21, // 44: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
+	23, // 45: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
+	25, // 46: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
+	27, // 47: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
+	29, // 48: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
+	31, // 49: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
+	33, // 50: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
+	35, // 51: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
+	37, // 52: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
+	39, // 53: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
+	41, // 54: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
+	43, // 55: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
+	16, // 56: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
+	18, // 57: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
+	20, // 58: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
+	22, // 59: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
+	24, // 60: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
+	26, // 61: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
+	28, // 62: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
+	30, // 63: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
+	32, // 64: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
+	34, // 65: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
+	36, // 66: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
+	38, // 67: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
+	40, // 68: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
+	42, // 69: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
+	44, // 70: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
+	56, // [56:71] is the sub-list for method output_type
+	41, // [41:56] is the sub-list for method input_type
+	41, // [41:41] is the sub-list for extension type_name
+	41, // [41:41] is the sub-list for extension extendee
+	0,  // [0:41] is the sub-list for field type_name
 }
 
 func init() { file_plugin_proto_init() }
@@ -2775,8 +3005,8 @@ func file_plugin_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_plugin_proto_rawDesc), len(file_plugin_proto_rawDesc)),
-			NumEnums:      4,
-			NumMessages:   38,
+			NumEnums:      3,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

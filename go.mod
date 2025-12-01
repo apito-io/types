@@ -1,6 +1,6 @@
 module github.com/apito-io/types
 
-go 1.25.0
+go 1.25.4
 
 require (
 	go.mongodb.org/mongo-driver v1.17.4

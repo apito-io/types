@@ -67,12 +67,6 @@ message EnvVariable {
   bool is_system = 4;
 }
 
-// Plugin type enum for internal vs external
-enum PluginType {
-  PLUGIN_TYPE_SYSTEM = 0;  // System-wide plugins (registered to system API)
-  PLUGIN_TYPE_PROJECT = 1;  // Project-specific plugins
-}
-
 // Plugin load status
 enum PluginLoadStatus {
   PLUGIN_LOAD_STATUS_NOT_INSTALLED = 0;
@@ -105,28 +99,55 @@ message PluginDetails {
   string version = 5;
   string description = 6;
   repeated string tags = 7;
-  PluginType type = 8;                // New field: system vs project
-  string role = 9;
-  repeated EnvVariable env_vars = 10;
-  string exported_variable = 11;
-  bool enable = 12;
-  bool debug = 13;
-  string repository_url = 14;
-  string branch = 15;
-  string author = 16;
-  PluginLoadStatus load_status = 17;
-  PluginActivateStatus activate_status = 18;
-  repeated string belongs_to_projects = 19; // project ids
+  repeated EnvVariable env_vars = 8;
+  string exported_variable = 9;
+  bool enable = 10;
+  bool debug = 11;
+  string repository_url = 12;
+  string branch = 13;
+  string author = 14;
+  PluginLoadStatus load_status = 15;
+  PluginActivateStatus activate_status = 16;
+  repeated string enable_for_projects = 17; // enable only for these project ids
+  PluginLanguage language = 18;
+  PluginUIConfig ui_config = 19;
+  repeated string registered_graphql_schemas = 20;
+  repeated string registered_rest_apis = 21;
   // HashiCorp specific fields
-  string binary_path = 20;
-  HashiCorpHandshakeConfig handshake_config = 21;
-  PluginLanguage language = 22;
-  PluginUIConfig ui_config = 23;
+  string binary_path = 22;
+  HashiCorpHandshakeConfig handshake_config = 23;
 }
 
 message PluginUIConfig {
-  string entry_path = 1;
+  bool enable = 1;
+  string dist_path = 2;
+  PluginUIIntegration integration = 3;
+  repeated PluginUISettings settings = 4;
 }
+
+message PluginUIIntegration {
+  PluginUIMenu header_menu = 1;
+  repeated PluginUIRoute routes = 2;
+}
+
+message PluginUIRoute {
+  string path = 1;
+  string component = 2;
+  string title = 3;
+}
+
+message PluginUISettings {
+  PluginUIMenu menu = 1;
+  string section = 2;
+}
+
+message PluginUIMenu {
+  string label = 1;
+  string path = 2;
+  string position = 3;
+  string icon = 4;
+}
+
 
 enum PluginLanguage {
   PLUGIN_LANGUAGE_GO = 0;
