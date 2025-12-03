@@ -5,6 +5,7 @@
 ### 1. **Language Field: Enum → String**
 
 **Before:**
+
 ```protobuf
 enum PluginLanguage {
   PLUGIN_LANGUAGE_GO = 0;
@@ -18,6 +19,7 @@ message PluginDetails {
 ```
 
 **After:**
+
 ```protobuf
 message PluginDetails {
   string language = 18; // "go", "js", "python", etc.
@@ -25,6 +27,7 @@ message PluginDetails {
 ```
 
 **Config YAML:**
+
 ```yaml
 # Before: language: 0
 # After:
@@ -34,6 +37,7 @@ language: "go"
 ### 2. **Placement Field: Enum → String**
 
 **Before:**
+
 ```protobuf
 enum PlacementType {
   PLACEMENT_TYPE_INTERNAL = 0;
@@ -47,6 +51,7 @@ message GraphQLSchemaConfigItem {
 ```
 
 **After:**
+
 ```protobuf
 message GraphQLSchemaConfigItem {
   string name = 1;
@@ -60,6 +65,7 @@ message RESTApiConfigItem {
 ```
 
 **Config YAML:**
+
 ```yaml
 # Before: placement: 1
 # After:
@@ -69,6 +75,7 @@ placement: "external"
 ### 3. **REST API Config: Nested → Direct Array**
 
 **Before:**
+
 ```protobuf
 message RESTApiConfig {
   repeated RESTApiConfigItem routes = 1;
@@ -80,6 +87,7 @@ message PluginDetails {
 ```
 
 **After:**
+
 ```protobuf
 message PluginDetails {
   repeated RESTApiConfigItem rest_api_config = 23;
@@ -87,6 +95,7 @@ message PluginDetails {
 ```
 
 **Config YAML:**
+
 ```yaml
 # Before:
 rest_api_config:
@@ -111,6 +120,7 @@ rest_api_config:
 ## Supported Values
 
 ### Language
+
 - `"go"` or `"golang"`
 - `"js"` or `"javascript"`
 - `"typescript"` or `"ts"`
@@ -125,6 +135,7 @@ rest_api_config:
 - `"dart"`
 
 ### Placement
+
 - `"internal"` - For internal/private endpoints
 - `"external"` - For external/public endpoints
 
@@ -135,12 +146,13 @@ If you have existing config files with numeric values:
 1. **Language**: Replace `language: 0` with `language: "go"`
 2. **Placement**: Replace `placement: 1` with `placement: "external"`
 3. **REST API Config**: Remove the `routes:` wrapper:
+
    ```yaml
    # Old:
    rest_api_config:
      routes:
        - route: "/path"
-   
+
    # New:
    rest_api_config:
      - route: "/path"
@@ -149,18 +161,20 @@ If you have existing config files with numeric values:
 ## Files Updated
 
 ### In types package:
+
 - ✅ `plugin.proto` - Updated schema
 - ✅ `protobuff/plugin.pb.go` - Regenerated
 - ✅ `inject_yaml_tags.go` - YAML tag injection script
 - ✅ `Makefile` - Automated generation
 
 ### In engine package:
+
 - ✅ `open-core/services/plugin/yaml_plugin_loader.go` - Updated loader logic
 
 ### In udbhabon-plugins:
+
 - ✅ `hc-suchok-plugin/config.yml` - Updated to use string values
 
 ## Testing
 
 The schema has been tested and verified to work correctly with YAML unmarshaling. All fields are properly populated and readable.
-

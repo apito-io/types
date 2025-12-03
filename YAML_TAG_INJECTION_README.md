@@ -11,13 +11,16 @@ We've implemented an automated solution to inject `yaml` tags into the generated
 ### Steps
 
 1. **Add @inject_tag comments in proto files** (`plugin.proto`)
+
    - Comments are added to document where yaml tags should go
    - Format: `// @inject_tag: yaml:"field_name"`
 
 2. **Generate protobuf files**
+
    - Run: `protoc --go_out=. --go-grpc_out=. plugin.proto`
 
 3. **Inject yaml tags**
+
    - Run: `go run inject_yaml_tags.go`
    - This script reads the generated `.pb.go` files and adds yaml tags based on json tags
 
@@ -28,6 +31,7 @@ We've implemented an automated solution to inject `yaml` tags into the generated
 ### Script: `inject_yaml_tags.go`
 
 The script:
+
 - Reads `protobuff/plugin.pb.go`
 - Finds all struct fields with protobuf and json tags
 - Adds corresponding yaml tags
@@ -39,7 +43,7 @@ Plugin config.yml files should match the protobuf schema exactly. **Use readable
 
 ```yaml
 id: "plugin-id"
-language: "go"  # Readable string: "go", "js", "python", "typescript", etc.
+language: "go" # Readable string: "go", "js", "python", "typescript", etc.
 title: "Plugin Title"
 version: "1.0.0"
 enable: true
@@ -55,11 +59,11 @@ env_vars:
 graphql_schema_config:
   queries:
     - name: "queryName"
-      placement: "external"  # Readable string: "internal" or "external"
+      placement: "external" # Readable string: "internal" or "external"
   mutations:
     - name: "mutationName"
       placement: "external"
-rest_api_config:  # Direct array, no "routes:" wrapper
+rest_api_config: # Direct array, no "routes:" wrapper
   - route: "/path"
     placement: "external"
 ```
@@ -82,6 +86,7 @@ make plugin
 ```
 
 This will:
+
 1. Generate new .pb.go files
 2. Automatically inject yaml tags
 3. Ready for YAML unmarshaling
@@ -103,4 +108,3 @@ func TestUnmarshal() {
 	// Should work without errors now!
 }
 ```
-
