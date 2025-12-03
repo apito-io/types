@@ -61,10 +61,10 @@ service HostService {
 
 // Common types
 message EnvVariable {
-  string key = 1;
-  string value = 2;
-  bool hide = 3;
-  bool is_system = 4;
+  string key = 1; // @inject_tag: yaml:"key"
+  string value = 2; // @inject_tag: yaml:"value"
+  bool hide = 3; // @inject_tag: yaml:"hide"
+  bool is_system = 4; // @inject_tag: yaml:"is_system"
 }
 
 // Plugin load status
@@ -85,64 +85,55 @@ enum PluginActivateStatus {
 
 // HashiCorp handshake configuration
 message HashiCorpHandshakeConfig {
-  uint32 protocol_version = 1;
-  string magic_cookie_key = 2;
-  string magic_cookie_value = 3;
+  uint32 protocol_version = 1; // @inject_tag: yaml:"protocol_version"
+  string magic_cookie_key = 2; // @inject_tag: yaml:"magic_cookie_key"
+  string magic_cookie_value = 3; // @inject_tag: yaml:"magic_cookie_value"
 }
 
 // Plugin details message
 message PluginDetails {
-  string id = 1;
-  string title = 2;
-  string icon = 3;
-  int64 serial = 4;
-  string version = 5;
-  string description = 6;
-  repeated string tags = 7;
-  repeated EnvVariable env_vars = 8;
-  string exported_variable = 9;
-  bool enable = 10;
-  bool debug = 11;
-  string repository_url = 12;
-  string branch = 13;
-  string author = 14;
-  PluginLoadStatus load_status = 15;
-  PluginActivateStatus activate_status = 16;
-  repeated string enable_for_projects = 17; // enable only for these project ids
-  PluginLanguage language = 18;
-  PluginUIConfig ui_config = 19;
-  repeated string registered_graphql_schemas = 20;
-  repeated string registered_rest_apis = 21;
-  GraphQLSchemaConfig graphql_schema_config = 22;
-  RESTApiConfig rest_api_config = 23;
+  string id = 1; // @inject_tag: yaml:"id"
+  string title = 2; // @inject_tag: yaml:"title"
+  string icon = 3; // @inject_tag: yaml:"icon"
+  int64 serial = 4; // @inject_tag: yaml:"serial"
+  string version = 5; // @inject_tag: yaml:"version"
+  string description = 6; // @inject_tag: yaml:"description"
+  repeated string tags = 7; // @inject_tag: yaml:"tags"
+  repeated EnvVariable env_vars = 8; // @inject_tag: yaml:"env_vars"
+  string exported_variable = 9; // @inject_tag: yaml:"exported_variable"
+  bool enable = 10; // @inject_tag: yaml:"enable"
+  bool debug = 11; // @inject_tag: yaml:"debug"
+  string repository_url = 12; // @inject_tag: yaml:"repository_url"
+  string branch = 13; // @inject_tag: yaml:"branch"
+  string author = 14; // @inject_tag: yaml:"author"
+  PluginLoadStatus load_status = 15; // @inject_tag: yaml:"load_status"
+  PluginActivateStatus activate_status = 16; // @inject_tag: yaml:"activate_status"
+  repeated string enable_for_projects = 17; // @inject_tag: yaml:"enable_for_projects"
+  string language = 18; // @inject_tag: yaml:"language" // "go", "js", "python", etc.
+  PluginUIConfig ui_config = 19; // @inject_tag: yaml:"ui_config"
+  repeated string registered_graphql_schemas = 20; // @inject_tag: yaml:"registered_graphql_schemas"
+  repeated string registered_rest_apis = 21; // @inject_tag: yaml:"registered_rest_apis"
+  GraphQLSchemaConfig graphql_schema_config = 22; // @inject_tag: yaml:"graphql_schema_config"
+  repeated RESTApiConfigItem rest_api_config = 23; // @inject_tag: yaml:"rest_api_config"
   // HashiCorp specific fields
-  string binary_path = 24;
-  HashiCorpHandshakeConfig handshake_config = 25;
+  string binary_path = 24; // @inject_tag: yaml:"binary_path"
+  HashiCorpHandshakeConfig handshake_config = 25; // @inject_tag: yaml:"handshake_config"
 }
 
 message GraphQLSchemaConfig {
-  repeated GraphQLSchemaConfigItem queries = 1;
-  repeated GraphQLSchemaConfigItem mutations = 2;
-  repeated GraphQLSchemaConfigItem subscriptions = 3;
+  repeated GraphQLSchemaConfigItem queries = 1; // @inject_tag: yaml:"queries"
+  repeated GraphQLSchemaConfigItem mutations = 2; // @inject_tag: yaml:"mutations"
+  repeated GraphQLSchemaConfigItem subscriptions = 3; // @inject_tag: yaml:"subscriptions"
 }
 
 message GraphQLSchemaConfigItem {
-  string name = 1;
-  PlacementType placement = 2;
-}
-
-enum PlacementType {
-  PLACEMENT_TYPE_INTERNAL = 0;
-  PLACEMENT_TYPE_EXTERNAL = 1;
-}
-
-message RESTApiConfig {
-  repeated RESTApiConfigItem routes = 1;
+  string name = 1; // @inject_tag: yaml:"name"
+  string placement = 2; // @inject_tag: yaml:"placement" // "internal" or "external"
 }
 
 message RESTApiConfigItem {
-  string route = 1;
-  PlacementType placement = 2;
+  string route = 1; // @inject_tag: yaml:"route"
+  string placement = 2; // @inject_tag: yaml:"placement" // "internal" or "external"
 }
 
 message RESTApi {
@@ -153,10 +144,10 @@ message RESTApi {
 }
 
 message PluginUIConfig {
-  bool enable = 1;
-  string dist_path = 2;
-  PluginUIIntegration integration = 3;
-  repeated PluginUISettings settings = 4;
+  bool enable = 1; // @inject_tag: yaml:"enable"
+  string dist_path = 2; // @inject_tag: yaml:"dist_path"
+  PluginUIIntegration integration = 3; // @inject_tag: yaml:"integration"
+  repeated PluginUISettings settings = 4; // @inject_tag: yaml:"settings"
 }
 
 message PluginUIIntegration {
@@ -183,20 +174,8 @@ message PluginUIMenu {
 }
 
 
-enum PluginLanguage {
-  PLUGIN_LANGUAGE_GO = 0;
-  PLUGIN_LANGUAGE_JS = 1;
-  PLUGIN_LANGUAGE_CPP = 2;
-  PLUGIN_LANGUAGE_PYTHON = 3;
-  PLUGIN_LANGUAGE_JAVA = 4;
-  PLUGIN_LANGUAGE_RUBY = 5;
-  PLUGIN_LANGUAGE_PHP = 6;
-  PLUGIN_LANGUAGE_CSHARP = 7;
-  PLUGIN_LANGUAGE_TYPESCRIPT = 8;
-  PLUGIN_LANGUAGE_RUST = 9;
-  PLUGIN_LANGUAGE_LUA = 10;
-  PLUGIN_LANGUAGE_DART = 11;
-}
+// Note: PluginLanguage is now a string field in PluginDetails
+// Supported values: "go", "js", "cpp", "python", "java", "ruby", "php", "csharp", "typescript", "rust", "lua", "dart"
 
 message ThirdPartyGraphQLSchemas {
   google.protobuf.Struct queries = 1;

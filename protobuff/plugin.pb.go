@@ -129,135 +129,13 @@ func (PluginActivateStatus) EnumDescriptor() ([]byte, []int) {
 	return file_plugin_proto_rawDescGZIP(), []int{1}
 }
 
-type PlacementType int32
-
-const (
-	PlacementType_PLACEMENT_TYPE_INTERNAL PlacementType = 0
-	PlacementType_PLACEMENT_TYPE_EXTERNAL PlacementType = 1
-)
-
-// Enum value maps for PlacementType.
-var (
-	PlacementType_name = map[int32]string{
-		0: "PLACEMENT_TYPE_INTERNAL",
-		1: "PLACEMENT_TYPE_EXTERNAL",
-	}
-	PlacementType_value = map[string]int32{
-		"PLACEMENT_TYPE_INTERNAL": 0,
-		"PLACEMENT_TYPE_EXTERNAL": 1,
-	}
-)
-
-func (x PlacementType) Enum() *PlacementType {
-	p := new(PlacementType)
-	*p = x
-	return p
-}
-
-func (x PlacementType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (PlacementType) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[2].Descriptor()
-}
-
-func (PlacementType) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[2]
-}
-
-func (x PlacementType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use PlacementType.Descriptor instead.
-func (PlacementType) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{2}
-}
-
-type PluginLanguage int32
-
-const (
-	PluginLanguage_PLUGIN_LANGUAGE_GO         PluginLanguage = 0
-	PluginLanguage_PLUGIN_LANGUAGE_JS         PluginLanguage = 1
-	PluginLanguage_PLUGIN_LANGUAGE_CPP        PluginLanguage = 2
-	PluginLanguage_PLUGIN_LANGUAGE_PYTHON     PluginLanguage = 3
-	PluginLanguage_PLUGIN_LANGUAGE_JAVA       PluginLanguage = 4
-	PluginLanguage_PLUGIN_LANGUAGE_RUBY       PluginLanguage = 5
-	PluginLanguage_PLUGIN_LANGUAGE_PHP        PluginLanguage = 6
-	PluginLanguage_PLUGIN_LANGUAGE_CSHARP     PluginLanguage = 7
-	PluginLanguage_PLUGIN_LANGUAGE_TYPESCRIPT PluginLanguage = 8
-	PluginLanguage_PLUGIN_LANGUAGE_RUST       PluginLanguage = 9
-	PluginLanguage_PLUGIN_LANGUAGE_LUA        PluginLanguage = 10
-	PluginLanguage_PLUGIN_LANGUAGE_DART       PluginLanguage = 11
-)
-
-// Enum value maps for PluginLanguage.
-var (
-	PluginLanguage_name = map[int32]string{
-		0:  "PLUGIN_LANGUAGE_GO",
-		1:  "PLUGIN_LANGUAGE_JS",
-		2:  "PLUGIN_LANGUAGE_CPP",
-		3:  "PLUGIN_LANGUAGE_PYTHON",
-		4:  "PLUGIN_LANGUAGE_JAVA",
-		5:  "PLUGIN_LANGUAGE_RUBY",
-		6:  "PLUGIN_LANGUAGE_PHP",
-		7:  "PLUGIN_LANGUAGE_CSHARP",
-		8:  "PLUGIN_LANGUAGE_TYPESCRIPT",
-		9:  "PLUGIN_LANGUAGE_RUST",
-		10: "PLUGIN_LANGUAGE_LUA",
-		11: "PLUGIN_LANGUAGE_DART",
-	}
-	PluginLanguage_value = map[string]int32{
-		"PLUGIN_LANGUAGE_GO":         0,
-		"PLUGIN_LANGUAGE_JS":         1,
-		"PLUGIN_LANGUAGE_CPP":        2,
-		"PLUGIN_LANGUAGE_PYTHON":     3,
-		"PLUGIN_LANGUAGE_JAVA":       4,
-		"PLUGIN_LANGUAGE_RUBY":       5,
-		"PLUGIN_LANGUAGE_PHP":        6,
-		"PLUGIN_LANGUAGE_CSHARP":     7,
-		"PLUGIN_LANGUAGE_TYPESCRIPT": 8,
-		"PLUGIN_LANGUAGE_RUST":       9,
-		"PLUGIN_LANGUAGE_LUA":        10,
-		"PLUGIN_LANGUAGE_DART":       11,
-	}
-)
-
-func (x PluginLanguage) Enum() *PluginLanguage {
-	p := new(PluginLanguage)
-	*p = x
-	return p
-}
-
-func (x PluginLanguage) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (PluginLanguage) Descriptor() protoreflect.EnumDescriptor {
-	return file_plugin_proto_enumTypes[3].Descriptor()
-}
-
-func (PluginLanguage) Type() protoreflect.EnumType {
-	return &file_plugin_proto_enumTypes[3]
-}
-
-func (x PluginLanguage) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use PluginLanguage.Descriptor instead.
-func (PluginLanguage) EnumDescriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{3}
-}
-
 // Common types
 type EnvVariable struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Value         string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	Hide          bool                   `protobuf:"varint,3,opt,name=hide,proto3" json:"hide,omitempty"`
-	IsSystem      bool                   `protobuf:"varint,4,opt,name=is_system,json=isSystem,proto3" json:"is_system,omitempty"`
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty" yaml:"key,omitempty"`                            // @inject_tag: yaml:"key"
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty" yaml:"value,omitempty"`                        // @inject_tag: yaml:"value"
+	Hide bool `protobuf:"varint,3,opt,name=hide,proto3" json:"hide,omitempty" yaml:"hide,omitempty"`                         // @inject_tag: yaml:"hide"
+	IsSystem bool `protobuf:"varint,4,opt,name=is_system,json=isSystem,proto3" json:"is_system,omitempty" yaml:"is_system,omitempty"` // @inject_tag: yaml:"is_system"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -323,9 +201,9 @@ func (x *EnvVariable) GetIsSystem() bool {
 // HashiCorp handshake configuration
 type HashiCorpHandshakeConfig struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
-	ProtocolVersion  uint32                 `protobuf:"varint,1,opt,name=protocol_version,json=protocolVersion,proto3" json:"protocol_version,omitempty"`
-	MagicCookieKey   string                 `protobuf:"bytes,2,opt,name=magic_cookie_key,json=magicCookieKey,proto3" json:"magic_cookie_key,omitempty"`
-	MagicCookieValue string                 `protobuf:"bytes,3,opt,name=magic_cookie_value,json=magicCookieValue,proto3" json:"magic_cookie_value,omitempty"`
+	ProtocolVersion uint32 `protobuf:"varint,1,opt,name=protocol_version,json=protocolVersion,proto3" json:"protocol_version,omitempty" yaml:"protocol_version,omitempty"`     // @inject_tag: yaml:"protocol_version"
+	MagicCookieKey string `protobuf:"bytes,2,opt,name=magic_cookie_key,json=magicCookieKey,proto3" json:"magic_cookie_key,omitempty" yaml:"magic_cookie_key,omitempty"`       // @inject_tag: yaml:"magic_cookie_key"
+	MagicCookieValue string `protobuf:"bytes,3,opt,name=magic_cookie_value,json=magicCookieValue,proto3" json:"magic_cookie_value,omitempty" yaml:"magic_cookie_value,omitempty"` // @inject_tag: yaml:"magic_cookie_value"
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -384,32 +262,32 @@ func (x *HashiCorpHandshakeConfig) GetMagicCookieValue() string {
 // Plugin details message
 type PluginDetails struct {
 	state                    protoimpl.MessageState `protogen:"open.v1"`
-	Id                       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title                    string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Icon                     string                 `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`
-	Serial                   int64                  `protobuf:"varint,4,opt,name=serial,proto3" json:"serial,omitempty"`
-	Version                  string                 `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
-	Description              string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
-	Tags                     []string               `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty"`
-	EnvVars                  []*EnvVariable         `protobuf:"bytes,8,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty"`
-	ExportedVariable         string                 `protobuf:"bytes,9,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty"`
-	Enable                   bool                   `protobuf:"varint,10,opt,name=enable,proto3" json:"enable,omitempty"`
-	Debug                    bool                   `protobuf:"varint,11,opt,name=debug,proto3" json:"debug,omitempty"`
-	RepositoryUrl            string                 `protobuf:"bytes,12,opt,name=repository_url,json=repositoryUrl,proto3" json:"repository_url,omitempty"`
-	Branch                   string                 `protobuf:"bytes,13,opt,name=branch,proto3" json:"branch,omitempty"`
-	Author                   string                 `protobuf:"bytes,14,opt,name=author,proto3" json:"author,omitempty"`
-	LoadStatus               PluginLoadStatus       `protobuf:"varint,15,opt,name=load_status,json=loadStatus,proto3,enum=apito.plugin.v1.PluginLoadStatus" json:"load_status,omitempty"`
-	ActivateStatus           PluginActivateStatus   `protobuf:"varint,16,opt,name=activate_status,json=activateStatus,proto3,enum=apito.plugin.v1.PluginActivateStatus" json:"activate_status,omitempty"`
-	EnableForProjects        []string               `protobuf:"bytes,17,rep,name=enable_for_projects,json=enableForProjects,proto3" json:"enable_for_projects,omitempty"` // enable only for these project ids
-	Language                 PluginLanguage         `protobuf:"varint,18,opt,name=language,proto3,enum=apito.plugin.v1.PluginLanguage" json:"language,omitempty"`
-	UiConfig                 *PluginUIConfig        `protobuf:"bytes,19,opt,name=ui_config,json=uiConfig,proto3" json:"ui_config,omitempty"`
-	RegisteredGraphqlSchemas []string               `protobuf:"bytes,20,rep,name=registered_graphql_schemas,json=registeredGraphqlSchemas,proto3" json:"registered_graphql_schemas,omitempty"`
-	RegisteredRestApis       []string               `protobuf:"bytes,21,rep,name=registered_rest_apis,json=registeredRestApis,proto3" json:"registered_rest_apis,omitempty"`
-	GraphqlSchemaConfig      *GraphQLSchemaConfig   `protobuf:"bytes,22,opt,name=graphql_schema_config,json=graphqlSchemaConfig,proto3" json:"graphql_schema_config,omitempty"`
-	RestApiConfig            *RESTApiConfig         `protobuf:"bytes,23,opt,name=rest_api_config,json=restApiConfig,proto3" json:"rest_api_config,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`                                                                                           // @inject_tag: yaml:"id"
+	Title string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty" yaml:"title,omitempty"`                                                                                     // @inject_tag: yaml:"title"
+	Icon string `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty" yaml:"icon,omitempty"`                                                                                       // @inject_tag: yaml:"icon"
+	Serial int64 `protobuf:"varint,4,opt,name=serial,proto3" json:"serial,omitempty" yaml:"serial,omitempty"`                                                                                  // @inject_tag: yaml:"serial"
+	Version string `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty" yaml:"version,omitempty"`                                                                                 // @inject_tag: yaml:"version"
+	Description string `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty" yaml:"description,omitempty"`                                                                         // @inject_tag: yaml:"description"
+	Tags []string `protobuf:"bytes,7,rep,name=tags,proto3" json:"tags,omitempty" yaml:"tags,omitempty"`                                                                                       // @inject_tag: yaml:"tags"
+	EnvVars []*EnvVariable `protobuf:"bytes,8,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty" yaml:"env_vars,omitempty"`                                                                  // @inject_tag: yaml:"env_vars"
+	ExportedVariable string `protobuf:"bytes,9,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty" yaml:"exported_variable,omitempty"`                                       // @inject_tag: yaml:"exported_variable"
+	Enable bool `protobuf:"varint,10,opt,name=enable,proto3" json:"enable,omitempty" yaml:"enable,omitempty"`                                                                                 // @inject_tag: yaml:"enable"
+	Debug bool `protobuf:"varint,11,opt,name=debug,proto3" json:"debug,omitempty" yaml:"debug,omitempty"`                                                                                   // @inject_tag: yaml:"debug"
+	RepositoryUrl string `protobuf:"bytes,12,opt,name=repository_url,json=repositoryUrl,proto3" json:"repository_url,omitempty" yaml:"repository_url,omitempty"`                                               // @inject_tag: yaml:"repository_url"
+	Branch string `protobuf:"bytes,13,opt,name=branch,proto3" json:"branch,omitempty" yaml:"branch,omitempty"`                                                                                  // @inject_tag: yaml:"branch"
+	Author string `protobuf:"bytes,14,opt,name=author,proto3" json:"author,omitempty" yaml:"author,omitempty"`                                                                                  // @inject_tag: yaml:"author"
+	LoadStatus PluginLoadStatus `protobuf:"varint,15,opt,name=load_status,json=loadStatus,proto3,enum=apito.plugin.v1.PluginLoadStatus" json:"load_status,omitempty" yaml:"load_status,omitempty"`                 // @inject_tag: yaml:"load_status"
+	ActivateStatus PluginActivateStatus `protobuf:"varint,16,opt,name=activate_status,json=activateStatus,proto3,enum=apito.plugin.v1.PluginActivateStatus" json:"activate_status,omitempty" yaml:"activate_status,omitempty"` // @inject_tag: yaml:"activate_status"
+	EnableForProjects []string `protobuf:"bytes,17,rep,name=enable_for_projects,json=enableForProjects,proto3" json:"enable_for_projects,omitempty" yaml:"enable_for_projects,omitempty"`                                 // @inject_tag: yaml:"enable_for_projects"
+	Language string `protobuf:"bytes,18,opt,name=language,proto3" json:"language,omitempty" yaml:"language,omitempty"`                                                                              // @inject_tag: yaml:"language" // "go", "js", "python", etc.
+	UiConfig *PluginUIConfig `protobuf:"bytes,19,opt,name=ui_config,json=uiConfig,proto3" json:"ui_config,omitempty" yaml:"ui_config,omitempty"`                                                              // @inject_tag: yaml:"ui_config"
+	RegisteredGraphqlSchemas []string `protobuf:"bytes,20,rep,name=registered_graphql_schemas,json=registeredGraphqlSchemas,proto3" json:"registered_graphql_schemas,omitempty" yaml:"registered_graphql_schemas,omitempty"`            // @inject_tag: yaml:"registered_graphql_schemas"
+	RegisteredRestApis []string `protobuf:"bytes,21,rep,name=registered_rest_apis,json=registeredRestApis,proto3" json:"registered_rest_apis,omitempty" yaml:"registered_rest_apis,omitempty"`                              // @inject_tag: yaml:"registered_rest_apis"
+	GraphqlSchemaConfig *GraphQLSchemaConfig `protobuf:"bytes,22,opt,name=graphql_schema_config,json=graphqlSchemaConfig,proto3" json:"graphql_schema_config,omitempty" yaml:"graphql_schema_config,omitempty"`                           // @inject_tag: yaml:"graphql_schema_config"
+	RestApiConfig []*RESTApiConfigItem `protobuf:"bytes,23,rep,name=rest_api_config,json=restApiConfig,proto3" json:"rest_api_config,omitempty" yaml:"rest_api_config,omitempty"`                                             // @inject_tag: yaml:"rest_api_config"
 	// HashiCorp specific fields
-	BinaryPath      string                    `protobuf:"bytes,24,opt,name=binary_path,json=binaryPath,proto3" json:"binary_path,omitempty"`
-	HandshakeConfig *HashiCorpHandshakeConfig `protobuf:"bytes,25,opt,name=handshake_config,json=handshakeConfig,proto3" json:"handshake_config,omitempty"`
+	BinaryPath string `protobuf:"bytes,24,opt,name=binary_path,json=binaryPath,proto3" json:"binary_path,omitempty" yaml:"binary_path,omitempty"`                // @inject_tag: yaml:"binary_path"
+	HandshakeConfig *HashiCorpHandshakeConfig `protobuf:"bytes,25,opt,name=handshake_config,json=handshakeConfig,proto3" json:"handshake_config,omitempty" yaml:"handshake_config,omitempty"` // @inject_tag: yaml:"handshake_config"
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -563,11 +441,11 @@ func (x *PluginDetails) GetEnableForProjects() []string {
 	return nil
 }
 
-func (x *PluginDetails) GetLanguage() PluginLanguage {
+func (x *PluginDetails) GetLanguage() string {
 	if x != nil {
 		return x.Language
 	}
-	return PluginLanguage_PLUGIN_LANGUAGE_GO
+	return ""
 }
 
 func (x *PluginDetails) GetUiConfig() *PluginUIConfig {
@@ -598,7 +476,7 @@ func (x *PluginDetails) GetGraphqlSchemaConfig() *GraphQLSchemaConfig {
 	return nil
 }
 
-func (x *PluginDetails) GetRestApiConfig() *RESTApiConfig {
+func (x *PluginDetails) GetRestApiConfig() []*RESTApiConfigItem {
 	if x != nil {
 		return x.RestApiConfig
 	}
@@ -621,9 +499,9 @@ func (x *PluginDetails) GetHandshakeConfig() *HashiCorpHandshakeConfig {
 
 type GraphQLSchemaConfig struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
-	Queries       []*GraphQLSchemaConfigItem `protobuf:"bytes,1,rep,name=queries,proto3" json:"queries,omitempty"`
-	Mutations     []*GraphQLSchemaConfigItem `protobuf:"bytes,2,rep,name=mutations,proto3" json:"mutations,omitempty"`
-	Subscriptions []*GraphQLSchemaConfigItem `protobuf:"bytes,3,rep,name=subscriptions,proto3" json:"subscriptions,omitempty"`
+	Queries []*GraphQLSchemaConfigItem `protobuf:"bytes,1,rep,name=queries,proto3" json:"queries,omitempty" yaml:"queries,omitempty"`             // @inject_tag: yaml:"queries"
+	Mutations []*GraphQLSchemaConfigItem `protobuf:"bytes,2,rep,name=mutations,proto3" json:"mutations,omitempty" yaml:"mutations,omitempty"`         // @inject_tag: yaml:"mutations"
+	Subscriptions []*GraphQLSchemaConfigItem `protobuf:"bytes,3,rep,name=subscriptions,proto3" json:"subscriptions,omitempty" yaml:"subscriptions,omitempty"` // @inject_tag: yaml:"subscriptions"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -681,8 +559,8 @@ func (x *GraphQLSchemaConfig) GetSubscriptions() []*GraphQLSchemaConfigItem {
 
 type GraphQLSchemaConfigItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Placement     PlacementType          `protobuf:"varint,2,opt,name=placement,proto3,enum=apito.plugin.v1.PlacementType" json:"placement,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty" yaml:"name,omitempty"`           // @inject_tag: yaml:"name"
+	Placement string `protobuf:"bytes,2,opt,name=placement,proto3" json:"placement,omitempty" yaml:"placement,omitempty"` // @inject_tag: yaml:"placement" // "internal" or "external"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -724,68 +602,24 @@ func (x *GraphQLSchemaConfigItem) GetName() string {
 	return ""
 }
 
-func (x *GraphQLSchemaConfigItem) GetPlacement() PlacementType {
+func (x *GraphQLSchemaConfigItem) GetPlacement() string {
 	if x != nil {
 		return x.Placement
 	}
-	return PlacementType_PLACEMENT_TYPE_INTERNAL
-}
-
-type RESTApiConfig struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Routes        []*RESTApiConfigItem   `protobuf:"bytes,1,rep,name=routes,proto3" json:"routes,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RESTApiConfig) Reset() {
-	*x = RESTApiConfig{}
-	mi := &file_plugin_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RESTApiConfig) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RESTApiConfig) ProtoMessage() {}
-
-func (x *RESTApiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RESTApiConfig.ProtoReflect.Descriptor instead.
-func (*RESTApiConfig) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *RESTApiConfig) GetRoutes() []*RESTApiConfigItem {
-	if x != nil {
-		return x.Routes
-	}
-	return nil
+	return ""
 }
 
 type RESTApiConfigItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Route         string                 `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
-	Placement     PlacementType          `protobuf:"varint,2,opt,name=placement,proto3,enum=apito.plugin.v1.PlacementType" json:"placement,omitempty"`
+	Route string `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty" yaml:"route,omitempty"`         // @inject_tag: yaml:"route"
+	Placement string `protobuf:"bytes,2,opt,name=placement,proto3" json:"placement,omitempty" yaml:"placement,omitempty"` // @inject_tag: yaml:"placement" // "internal" or "external"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RESTApiConfigItem) Reset() {
 	*x = RESTApiConfigItem{}
-	mi := &file_plugin_proto_msgTypes[6]
+	mi := &file_plugin_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -797,7 +631,7 @@ func (x *RESTApiConfigItem) String() string {
 func (*RESTApiConfigItem) ProtoMessage() {}
 
 func (x *RESTApiConfigItem) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[6]
+	mi := &file_plugin_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -810,7 +644,7 @@ func (x *RESTApiConfigItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApiConfigItem.ProtoReflect.Descriptor instead.
 func (*RESTApiConfigItem) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{6}
+	return file_plugin_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RESTApiConfigItem) GetRoute() string {
@@ -820,26 +654,26 @@ func (x *RESTApiConfigItem) GetRoute() string {
 	return ""
 }
 
-func (x *RESTApiConfigItem) GetPlacement() PlacementType {
+func (x *RESTApiConfigItem) GetPlacement() string {
 	if x != nil {
 		return x.Placement
 	}
-	return PlacementType_PLACEMENT_TYPE_INTERNAL
+	return ""
 }
 
 type RESTApi struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Route         string                 `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
-	Method        string                 `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Schema        *structpb.Struct       `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty"`
+	Route string `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty" yaml:"route,omitempty"`
+	Method string `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty" yaml:"method,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty" yaml:"description,omitempty"`
+	Schema *structpb.Struct `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty" yaml:"schema,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RESTApi) Reset() {
 	*x = RESTApi{}
-	mi := &file_plugin_proto_msgTypes[7]
+	mi := &file_plugin_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -851,7 +685,7 @@ func (x *RESTApi) String() string {
 func (*RESTApi) ProtoMessage() {}
 
 func (x *RESTApi) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[7]
+	mi := &file_plugin_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -864,7 +698,7 @@ func (x *RESTApi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApi.ProtoReflect.Descriptor instead.
 func (*RESTApi) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{7}
+	return file_plugin_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RESTApi) GetRoute() string {
@@ -897,17 +731,17 @@ func (x *RESTApi) GetSchema() *structpb.Struct {
 
 type PluginUIConfig struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Enable        bool                   `protobuf:"varint,1,opt,name=enable,proto3" json:"enable,omitempty"`
-	DistPath      string                 `protobuf:"bytes,2,opt,name=dist_path,json=distPath,proto3" json:"dist_path,omitempty"`
-	Integration   *PluginUIIntegration   `protobuf:"bytes,3,opt,name=integration,proto3" json:"integration,omitempty"`
-	Settings      []*PluginUISettings    `protobuf:"bytes,4,rep,name=settings,proto3" json:"settings,omitempty"`
+	Enable bool `protobuf:"varint,1,opt,name=enable,proto3" json:"enable,omitempty" yaml:"enable,omitempty"`                    // @inject_tag: yaml:"enable"
+	DistPath string `protobuf:"bytes,2,opt,name=dist_path,json=distPath,proto3" json:"dist_path,omitempty" yaml:"dist_path,omitempty"` // @inject_tag: yaml:"dist_path"
+	Integration *PluginUIIntegration `protobuf:"bytes,3,opt,name=integration,proto3" json:"integration,omitempty" yaml:"integration,omitempty"`           // @inject_tag: yaml:"integration"
+	Settings []*PluginUISettings `protobuf:"bytes,4,rep,name=settings,proto3" json:"settings,omitempty" yaml:"settings,omitempty"`                 // @inject_tag: yaml:"settings"
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginUIConfig) Reset() {
 	*x = PluginUIConfig{}
-	mi := &file_plugin_proto_msgTypes[8]
+	mi := &file_plugin_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -919,7 +753,7 @@ func (x *PluginUIConfig) String() string {
 func (*PluginUIConfig) ProtoMessage() {}
 
 func (x *PluginUIConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[8]
+	mi := &file_plugin_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -932,7 +766,7 @@ func (x *PluginUIConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginUIConfig.ProtoReflect.Descriptor instead.
 func (*PluginUIConfig) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{8}
+	return file_plugin_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PluginUIConfig) GetEnable() bool {
@@ -965,15 +799,15 @@ func (x *PluginUIConfig) GetSettings() []*PluginUISettings {
 
 type PluginUIIntegration struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	HeaderMenu    *PluginUIMenu          `protobuf:"bytes,1,opt,name=header_menu,json=headerMenu,proto3" json:"header_menu,omitempty"`
-	Routes        []*PluginUIRoute       `protobuf:"bytes,2,rep,name=routes,proto3" json:"routes,omitempty"`
+	HeaderMenu *PluginUIMenu `protobuf:"bytes,1,opt,name=header_menu,json=headerMenu,proto3" json:"header_menu,omitempty" yaml:"header_menu,omitempty"`
+	Routes []*PluginUIRoute `protobuf:"bytes,2,rep,name=routes,proto3" json:"routes,omitempty" yaml:"routes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginUIIntegration) Reset() {
 	*x = PluginUIIntegration{}
-	mi := &file_plugin_proto_msgTypes[9]
+	mi := &file_plugin_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -985,7 +819,7 @@ func (x *PluginUIIntegration) String() string {
 func (*PluginUIIntegration) ProtoMessage() {}
 
 func (x *PluginUIIntegration) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[9]
+	mi := &file_plugin_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -998,7 +832,7 @@ func (x *PluginUIIntegration) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginUIIntegration.ProtoReflect.Descriptor instead.
 func (*PluginUIIntegration) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{9}
+	return file_plugin_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *PluginUIIntegration) GetHeaderMenu() *PluginUIMenu {
@@ -1017,16 +851,16 @@ func (x *PluginUIIntegration) GetRoutes() []*PluginUIRoute {
 
 type PluginUIRoute struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
-	Component     string                 `protobuf:"bytes,2,opt,name=component,proto3" json:"component,omitempty"`
-	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Path string `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty" yaml:"path,omitempty"`
+	Component string `protobuf:"bytes,2,opt,name=component,proto3" json:"component,omitempty" yaml:"component,omitempty"`
+	Title string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty" yaml:"title,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginUIRoute) Reset() {
 	*x = PluginUIRoute{}
-	mi := &file_plugin_proto_msgTypes[10]
+	mi := &file_plugin_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1038,7 +872,7 @@ func (x *PluginUIRoute) String() string {
 func (*PluginUIRoute) ProtoMessage() {}
 
 func (x *PluginUIRoute) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[10]
+	mi := &file_plugin_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +885,7 @@ func (x *PluginUIRoute) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginUIRoute.ProtoReflect.Descriptor instead.
 func (*PluginUIRoute) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{10}
+	return file_plugin_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PluginUIRoute) GetPath() string {
@@ -1077,15 +911,15 @@ func (x *PluginUIRoute) GetTitle() string {
 
 type PluginUISettings struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Menu          *PluginUIMenu          `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty"`
-	Section       string                 `protobuf:"bytes,2,opt,name=section,proto3" json:"section,omitempty"`
+	Menu *PluginUIMenu `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty" yaml:"menu,omitempty"`
+	Section string `protobuf:"bytes,2,opt,name=section,proto3" json:"section,omitempty" yaml:"section,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginUISettings) Reset() {
 	*x = PluginUISettings{}
-	mi := &file_plugin_proto_msgTypes[11]
+	mi := &file_plugin_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1097,7 +931,7 @@ func (x *PluginUISettings) String() string {
 func (*PluginUISettings) ProtoMessage() {}
 
 func (x *PluginUISettings) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[11]
+	mi := &file_plugin_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1110,7 +944,7 @@ func (x *PluginUISettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginUISettings.ProtoReflect.Descriptor instead.
 func (*PluginUISettings) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{11}
+	return file_plugin_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PluginUISettings) GetMenu() *PluginUIMenu {
@@ -1129,17 +963,17 @@ func (x *PluginUISettings) GetSection() string {
 
 type PluginUIMenu struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
-	Path          string                 `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
-	Position      string                 `protobuf:"bytes,3,opt,name=position,proto3" json:"position,omitempty"`
-	Icon          string                 `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon,omitempty"`
+	Label string `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty" yaml:"label,omitempty"`
+	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty" yaml:"path,omitempty"`
+	Position string `protobuf:"bytes,3,opt,name=position,proto3" json:"position,omitempty" yaml:"position,omitempty"`
+	Icon string `protobuf:"bytes,4,opt,name=icon,proto3" json:"icon,omitempty" yaml:"icon,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginUIMenu) Reset() {
 	*x = PluginUIMenu{}
-	mi := &file_plugin_proto_msgTypes[12]
+	mi := &file_plugin_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1151,7 +985,7 @@ func (x *PluginUIMenu) String() string {
 func (*PluginUIMenu) ProtoMessage() {}
 
 func (x *PluginUIMenu) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[12]
+	mi := &file_plugin_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1164,7 +998,7 @@ func (x *PluginUIMenu) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginUIMenu.ProtoReflect.Descriptor instead.
 func (*PluginUIMenu) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{12}
+	return file_plugin_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PluginUIMenu) GetLabel() string {
@@ -1197,16 +1031,16 @@ func (x *PluginUIMenu) GetIcon() string {
 
 type ThirdPartyGraphQLSchemas struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Queries       *structpb.Struct       `protobuf:"bytes,1,opt,name=queries,proto3" json:"queries,omitempty"`
-	Mutations     *structpb.Struct       `protobuf:"bytes,2,opt,name=mutations,proto3" json:"mutations,omitempty"`
-	Subscriptions *structpb.Struct       `protobuf:"bytes,3,opt,name=subscriptions,proto3" json:"subscriptions,omitempty"`
+	Queries *structpb.Struct `protobuf:"bytes,1,opt,name=queries,proto3" json:"queries,omitempty" yaml:"queries,omitempty"`
+	Mutations *structpb.Struct `protobuf:"bytes,2,opt,name=mutations,proto3" json:"mutations,omitempty" yaml:"mutations,omitempty"`
+	Subscriptions *structpb.Struct `protobuf:"bytes,3,opt,name=subscriptions,proto3" json:"subscriptions,omitempty" yaml:"subscriptions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ThirdPartyGraphQLSchemas) Reset() {
 	*x = ThirdPartyGraphQLSchemas{}
-	mi := &file_plugin_proto_msgTypes[13]
+	mi := &file_plugin_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1218,7 +1052,7 @@ func (x *ThirdPartyGraphQLSchemas) String() string {
 func (*ThirdPartyGraphQLSchemas) ProtoMessage() {}
 
 func (x *ThirdPartyGraphQLSchemas) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[13]
+	mi := &file_plugin_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1231,7 +1065,7 @@ func (x *ThirdPartyGraphQLSchemas) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ThirdPartyGraphQLSchemas.ProtoReflect.Descriptor instead.
 func (*ThirdPartyGraphQLSchemas) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{13}
+	return file_plugin_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ThirdPartyGraphQLSchemas) GetQueries() *structpb.Struct {
@@ -1257,19 +1091,19 @@ func (x *ThirdPartyGraphQLSchemas) GetSubscriptions() *structpb.Struct {
 
 type ThirdPartyRESTApi struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
-	Method      string                 `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty"`
-	Path        string                 `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
-	Description string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Schema      *structpb.Struct       `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty"`
+	Method string `protobuf:"bytes,1,opt,name=method,proto3" json:"method,omitempty" yaml:"method,omitempty"`
+	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty" yaml:"path,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty" yaml:"description,omitempty"`
+	Schema *structpb.Struct `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty" yaml:"schema,omitempty"`
 	// Optional: handler function name for this endpoint
-	Handler       string `protobuf:"bytes,5,opt,name=handler,proto3" json:"handler,omitempty"`
+	Handler string `protobuf:"bytes,5,opt,name=handler,proto3" json:"handler,omitempty" yaml:"handler,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ThirdPartyRESTApi) Reset() {
 	*x = ThirdPartyRESTApi{}
-	mi := &file_plugin_proto_msgTypes[14]
+	mi := &file_plugin_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1281,7 +1115,7 @@ func (x *ThirdPartyRESTApi) String() string {
 func (*ThirdPartyRESTApi) ProtoMessage() {}
 
 func (x *ThirdPartyRESTApi) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[14]
+	mi := &file_plugin_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1294,7 +1128,7 @@ func (x *ThirdPartyRESTApi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ThirdPartyRESTApi.ProtoReflect.Descriptor instead.
 func (*ThirdPartyRESTApi) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{14}
+	return file_plugin_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ThirdPartyRESTApi) GetMethod() string {
@@ -1334,19 +1168,19 @@ func (x *ThirdPartyRESTApi) GetHandler() string {
 
 type PluginProject struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Schema        *structpb.Struct       `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" yaml:"name,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty" yaml:"description,omitempty"`
+	Schema *structpb.Struct `protobuf:"bytes,4,opt,name=schema,proto3" json:"schema,omitempty" yaml:"schema,omitempty"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" yaml:"created_at,omitempty"`
+	UpdatedAt string `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PluginProject) Reset() {
 	*x = PluginProject{}
-	mi := &file_plugin_proto_msgTypes[15]
+	mi := &file_plugin_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1358,7 +1192,7 @@ func (x *PluginProject) String() string {
 func (*PluginProject) ProtoMessage() {}
 
 func (x *PluginProject) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[15]
+	mi := &file_plugin_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1371,7 +1205,7 @@ func (x *PluginProject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PluginProject.ProtoReflect.Descriptor instead.
 func (*PluginProject) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{15}
+	return file_plugin_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *PluginProject) GetId() string {
@@ -1418,19 +1252,19 @@ func (x *PluginProject) GetUpdatedAt() string {
 
 type AuditData struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
-	Resource         string                 `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
-	Action           string                 `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
-	Author           *structpb.Struct       `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
-	Data             *structpb.Struct       `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`
-	Meta             *structpb.Struct       `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty"`
-	AdditionalFields *structpb.Struct       `protobuf:"bytes,6,opt,name=additional_fields,json=additionalFields,proto3" json:"additional_fields,omitempty"`
+	Resource string `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty" yaml:"resource,omitempty"`
+	Action string `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty" yaml:"action,omitempty"`
+	Author *structpb.Struct `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty" yaml:"author,omitempty"`
+	Data *structpb.Struct `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty" yaml:"data,omitempty"`
+	Meta *structpb.Struct `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty" yaml:"meta,omitempty"`
+	AdditionalFields *structpb.Struct `protobuf:"bytes,6,opt,name=additional_fields,json=additionalFields,proto3" json:"additional_fields,omitempty" yaml:"additional_fields,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
 
 func (x *AuditData) Reset() {
 	*x = AuditData{}
-	mi := &file_plugin_proto_msgTypes[16]
+	mi := &file_plugin_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1442,7 +1276,7 @@ func (x *AuditData) String() string {
 func (*AuditData) ProtoMessage() {}
 
 func (x *AuditData) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[16]
+	mi := &file_plugin_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1455,7 +1289,7 @@ func (x *AuditData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuditData.ProtoReflect.Descriptor instead.
 func (*AuditData) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{16}
+	return file_plugin_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AuditData) GetResource() string {
@@ -1503,14 +1337,14 @@ func (x *AuditData) GetAdditionalFields() *structpb.Struct {
 // Plugin Service Messages
 type InitRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EnvVars       []*EnvVariable         `protobuf:"bytes,1,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty"`
+	EnvVars []*EnvVariable `protobuf:"bytes,1,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty" yaml:"env_vars,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *InitRequest) Reset() {
 	*x = InitRequest{}
-	mi := &file_plugin_proto_msgTypes[17]
+	mi := &file_plugin_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1522,7 +1356,7 @@ func (x *InitRequest) String() string {
 func (*InitRequest) ProtoMessage() {}
 
 func (x *InitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[17]
+	mi := &file_plugin_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1535,7 +1369,7 @@ func (x *InitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitRequest.ProtoReflect.Descriptor instead.
 func (*InitRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{17}
+	return file_plugin_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *InitRequest) GetEnvVars() []*EnvVariable {
@@ -1547,15 +1381,15 @@ func (x *InitRequest) GetEnvVars() []*EnvVariable {
 
 type InitResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty" yaml:"success,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty" yaml:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *InitResponse) Reset() {
 	*x = InitResponse{}
-	mi := &file_plugin_proto_msgTypes[18]
+	mi := &file_plugin_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1567,7 +1401,7 @@ func (x *InitResponse) String() string {
 func (*InitResponse) ProtoMessage() {}
 
 func (x *InitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[18]
+	mi := &file_plugin_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1580,7 +1414,7 @@ func (x *InitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InitResponse.ProtoReflect.Descriptor instead.
 func (*InitResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{18}
+	return file_plugin_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *InitResponse) GetSuccess() bool {
@@ -1605,7 +1439,7 @@ type MigrationRequest struct {
 
 func (x *MigrationRequest) Reset() {
 	*x = MigrationRequest{}
-	mi := &file_plugin_proto_msgTypes[19]
+	mi := &file_plugin_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1617,7 +1451,7 @@ func (x *MigrationRequest) String() string {
 func (*MigrationRequest) ProtoMessage() {}
 
 func (x *MigrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[19]
+	mi := &file_plugin_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1630,20 +1464,20 @@ func (x *MigrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MigrationRequest.ProtoReflect.Descriptor instead.
 func (*MigrationRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{19}
+	return file_plugin_proto_rawDescGZIP(), []int{18}
 }
 
 type MigrationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty" yaml:"success,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty" yaml:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *MigrationResponse) Reset() {
 	*x = MigrationResponse{}
-	mi := &file_plugin_proto_msgTypes[20]
+	mi := &file_plugin_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1655,7 +1489,7 @@ func (x *MigrationResponse) String() string {
 func (*MigrationResponse) ProtoMessage() {}
 
 func (x *MigrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[20]
+	mi := &file_plugin_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1668,7 +1502,7 @@ func (x *MigrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MigrationResponse.ProtoReflect.Descriptor instead.
 func (*MigrationResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{20}
+	return file_plugin_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *MigrationResponse) GetSuccess() bool {
@@ -1693,7 +1527,7 @@ type SchemaRegisterRequest struct {
 
 func (x *SchemaRegisterRequest) Reset() {
 	*x = SchemaRegisterRequest{}
-	mi := &file_plugin_proto_msgTypes[21]
+	mi := &file_plugin_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1705,7 +1539,7 @@ func (x *SchemaRegisterRequest) String() string {
 func (*SchemaRegisterRequest) ProtoMessage() {}
 
 func (x *SchemaRegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[21]
+	mi := &file_plugin_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1718,19 +1552,19 @@ func (x *SchemaRegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchemaRegisterRequest.ProtoReflect.Descriptor instead.
 func (*SchemaRegisterRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{21}
+	return file_plugin_proto_rawDescGZIP(), []int{20}
 }
 
 type SchemaRegisterResponse struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Schema        *ThirdPartyGraphQLSchemas `protobuf:"bytes,1,opt,name=schema,proto3" json:"schema,omitempty"`
+	Schema *ThirdPartyGraphQLSchemas `protobuf:"bytes,1,opt,name=schema,proto3" json:"schema,omitempty" yaml:"schema,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SchemaRegisterResponse) Reset() {
 	*x = SchemaRegisterResponse{}
-	mi := &file_plugin_proto_msgTypes[22]
+	mi := &file_plugin_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1742,7 +1576,7 @@ func (x *SchemaRegisterResponse) String() string {
 func (*SchemaRegisterResponse) ProtoMessage() {}
 
 func (x *SchemaRegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[22]
+	mi := &file_plugin_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1755,7 +1589,7 @@ func (x *SchemaRegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchemaRegisterResponse.ProtoReflect.Descriptor instead.
 func (*SchemaRegisterResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{22}
+	return file_plugin_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *SchemaRegisterResponse) GetSchema() *ThirdPartyGraphQLSchemas {
@@ -1773,7 +1607,7 @@ type RESTApiRegisterRequest struct {
 
 func (x *RESTApiRegisterRequest) Reset() {
 	*x = RESTApiRegisterRequest{}
-	mi := &file_plugin_proto_msgTypes[23]
+	mi := &file_plugin_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1785,7 +1619,7 @@ func (x *RESTApiRegisterRequest) String() string {
 func (*RESTApiRegisterRequest) ProtoMessage() {}
 
 func (x *RESTApiRegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[23]
+	mi := &file_plugin_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1798,19 +1632,19 @@ func (x *RESTApiRegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApiRegisterRequest.ProtoReflect.Descriptor instead.
 func (*RESTApiRegisterRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{23}
+	return file_plugin_proto_rawDescGZIP(), []int{22}
 }
 
 type RESTApiRegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Apis          []*ThirdPartyRESTApi   `protobuf:"bytes,1,rep,name=apis,proto3" json:"apis,omitempty"`
+	Apis []*ThirdPartyRESTApi `protobuf:"bytes,1,rep,name=apis,proto3" json:"apis,omitempty" yaml:"apis,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RESTApiRegisterResponse) Reset() {
 	*x = RESTApiRegisterResponse{}
-	mi := &file_plugin_proto_msgTypes[24]
+	mi := &file_plugin_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1822,7 +1656,7 @@ func (x *RESTApiRegisterResponse) String() string {
 func (*RESTApiRegisterResponse) ProtoMessage() {}
 
 func (x *RESTApiRegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[24]
+	mi := &file_plugin_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1835,7 +1669,7 @@ func (x *RESTApiRegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RESTApiRegisterResponse.ProtoReflect.Descriptor instead.
 func (*RESTApiRegisterResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{24}
+	return file_plugin_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *RESTApiRegisterResponse) GetApis() []*ThirdPartyRESTApi {
@@ -1853,7 +1687,7 @@ type GetVersionRequest struct {
 
 func (x *GetVersionRequest) Reset() {
 	*x = GetVersionRequest{}
-	mi := &file_plugin_proto_msgTypes[25]
+	mi := &file_plugin_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1865,7 +1699,7 @@ func (x *GetVersionRequest) String() string {
 func (*GetVersionRequest) ProtoMessage() {}
 
 func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[25]
+	mi := &file_plugin_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1878,19 +1712,19 @@ func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVersionRequest.ProtoReflect.Descriptor instead.
 func (*GetVersionRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{25}
+	return file_plugin_proto_rawDescGZIP(), []int{24}
 }
 
 type GetVersionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Version       string                 `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty" yaml:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetVersionResponse) Reset() {
 	*x = GetVersionResponse{}
-	mi := &file_plugin_proto_msgTypes[26]
+	mi := &file_plugin_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1902,7 +1736,7 @@ func (x *GetVersionResponse) String() string {
 func (*GetVersionResponse) ProtoMessage() {}
 
 func (x *GetVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[26]
+	mi := &file_plugin_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1915,7 +1749,7 @@ func (x *GetVersionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVersionResponse.ProtoReflect.Descriptor instead.
 func (*GetVersionResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{26}
+	return file_plugin_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetVersionResponse) GetVersion() string {
@@ -1927,17 +1761,17 @@ func (x *GetVersionResponse) GetVersion() string {
 
 type ExecuteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FunctionName  string                 `protobuf:"bytes,1,opt,name=function_name,json=functionName,proto3" json:"function_name,omitempty"` // The function/resolver name to execute
-	FunctionType  string                 `protobuf:"bytes,2,opt,name=function_type,json=functionType,proto3" json:"function_type,omitempty"` // Type: "graphql_query", "graphql_mutation", "rest_api", "function"
-	Args          *structpb.Struct       `protobuf:"bytes,3,opt,name=args,proto3" json:"args,omitempty"`                                     // Arguments for the function
-	Context       *structpb.Struct       `protobuf:"bytes,4,opt,name=context,proto3" json:"context,omitempty"`                               // Additional context data
+	FunctionName string `protobuf:"bytes,1,opt,name=function_name,json=functionName,proto3" json:"function_name,omitempty" yaml:"function_name,omitempty"` // The function/resolver name to execute
+	FunctionType string `protobuf:"bytes,2,opt,name=function_type,json=functionType,proto3" json:"function_type,omitempty" yaml:"function_type,omitempty"` // Type: "graphql_query", "graphql_mutation", "rest_api", "function"
+	Args *structpb.Struct `protobuf:"bytes,3,opt,name=args,proto3" json:"args,omitempty" yaml:"args,omitempty"`                                     // Arguments for the function
+	Context *structpb.Struct `protobuf:"bytes,4,opt,name=context,proto3" json:"context,omitempty" yaml:"context,omitempty"`                               // Additional context data
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExecuteRequest) Reset() {
 	*x = ExecuteRequest{}
-	mi := &file_plugin_proto_msgTypes[27]
+	mi := &file_plugin_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1949,7 +1783,7 @@ func (x *ExecuteRequest) String() string {
 func (*ExecuteRequest) ProtoMessage() {}
 
 func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[27]
+	mi := &file_plugin_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1962,7 +1796,7 @@ func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteRequest.ProtoReflect.Descriptor instead.
 func (*ExecuteRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{27}
+	return file_plugin_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ExecuteRequest) GetFunctionName() string {
@@ -1995,16 +1829,16 @@ func (x *ExecuteRequest) GetContext() *structpb.Struct {
 
 type ExecuteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Result        *anypb.Any             `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"` // The actual result data
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty" yaml:"success,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty" yaml:"message,omitempty"`
+	Result *anypb.Any `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty" yaml:"result,omitempty"` // The actual result data
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExecuteResponse) Reset() {
 	*x = ExecuteResponse{}
-	mi := &file_plugin_proto_msgTypes[28]
+	mi := &file_plugin_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2016,7 +1850,7 @@ func (x *ExecuteResponse) String() string {
 func (*ExecuteResponse) ProtoMessage() {}
 
 func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[28]
+	mi := &file_plugin_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2029,7 +1863,7 @@ func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteResponse.ProtoReflect.Descriptor instead.
 func (*ExecuteResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{28}
+	return file_plugin_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ExecuteResponse) GetSuccess() bool {
@@ -2056,15 +1890,15 @@ func (x *ExecuteResponse) GetResult() *anypb.Any {
 // Host Service Messages
 type GenerateTenantTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty" yaml:"token,omitempty"`
+	TenantId string `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty" yaml:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GenerateTenantTokenRequest) Reset() {
 	*x = GenerateTenantTokenRequest{}
-	mi := &file_plugin_proto_msgTypes[29]
+	mi := &file_plugin_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2076,7 +1910,7 @@ func (x *GenerateTenantTokenRequest) String() string {
 func (*GenerateTenantTokenRequest) ProtoMessage() {}
 
 func (x *GenerateTenantTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[29]
+	mi := &file_plugin_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2089,7 +1923,7 @@ func (x *GenerateTenantTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateTenantTokenRequest.ProtoReflect.Descriptor instead.
 func (*GenerateTenantTokenRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{29}
+	return file_plugin_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *GenerateTenantTokenRequest) GetToken() string {
@@ -2108,14 +1942,14 @@ func (x *GenerateTenantTokenRequest) GetTenantId() string {
 
 type GenerateTenantTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty" yaml:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GenerateTenantTokenResponse) Reset() {
 	*x = GenerateTenantTokenResponse{}
-	mi := &file_plugin_proto_msgTypes[30]
+	mi := &file_plugin_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2127,7 +1961,7 @@ func (x *GenerateTenantTokenResponse) String() string {
 func (*GenerateTenantTokenResponse) ProtoMessage() {}
 
 func (x *GenerateTenantTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[30]
+	mi := &file_plugin_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2140,7 +1974,7 @@ func (x *GenerateTenantTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateTenantTokenResponse.ProtoReflect.Descriptor instead.
 func (*GenerateTenantTokenResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{30}
+	return file_plugin_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GenerateTenantTokenResponse) GetToken() string {
@@ -2152,14 +1986,14 @@ func (x *GenerateTenantTokenResponse) GetToken() string {
 
 type GetProjectDetailsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProjectId     string                 `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty" yaml:"project_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetProjectDetailsRequest) Reset() {
 	*x = GetProjectDetailsRequest{}
-	mi := &file_plugin_proto_msgTypes[31]
+	mi := &file_plugin_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2171,7 +2005,7 @@ func (x *GetProjectDetailsRequest) String() string {
 func (*GetProjectDetailsRequest) ProtoMessage() {}
 
 func (x *GetProjectDetailsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[31]
+	mi := &file_plugin_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2184,7 +2018,7 @@ func (x *GetProjectDetailsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProjectDetailsRequest.ProtoReflect.Descriptor instead.
 func (*GetProjectDetailsRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{31}
+	return file_plugin_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetProjectDetailsRequest) GetProjectId() string {
@@ -2196,14 +2030,14 @@ func (x *GetProjectDetailsRequest) GetProjectId() string {
 
 type GetProjectDetailsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Project       *PluginProject         `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	Project *PluginProject `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty" yaml:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetProjectDetailsResponse) Reset() {
 	*x = GetProjectDetailsResponse{}
-	mi := &file_plugin_proto_msgTypes[32]
+	mi := &file_plugin_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2215,7 +2049,7 @@ func (x *GetProjectDetailsResponse) String() string {
 func (*GetProjectDetailsResponse) ProtoMessage() {}
 
 func (x *GetProjectDetailsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[32]
+	mi := &file_plugin_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2228,7 +2062,7 @@ func (x *GetProjectDetailsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProjectDetailsResponse.ProtoReflect.Descriptor instead.
 func (*GetProjectDetailsResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{32}
+	return file_plugin_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetProjectDetailsResponse) GetProject() *PluginProject {
@@ -2240,16 +2074,16 @@ func (x *GetProjectDetailsResponse) GetProject() *PluginProject {
 
 type GetSingleResourceRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Model          string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
-	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
-	SinglePageData bool                   `protobuf:"varint,3,opt,name=single_page_data,json=singlePageData,proto3" json:"single_page_data,omitempty"`
+	Model string `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty" yaml:"model,omitempty"`
+	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`
+	SinglePageData bool `protobuf:"varint,3,opt,name=single_page_data,json=singlePageData,proto3" json:"single_page_data,omitempty" yaml:"single_page_data,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GetSingleResourceRequest) Reset() {
 	*x = GetSingleResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[33]
+	mi := &file_plugin_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2261,7 +2095,7 @@ func (x *GetSingleResourceRequest) String() string {
 func (*GetSingleResourceRequest) ProtoMessage() {}
 
 func (x *GetSingleResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[33]
+	mi := &file_plugin_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2274,7 +2108,7 @@ func (x *GetSingleResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSingleResourceRequest.ProtoReflect.Descriptor instead.
 func (*GetSingleResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{33}
+	return file_plugin_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetSingleResourceRequest) GetModel() string {
@@ -2300,14 +2134,14 @@ func (x *GetSingleResourceRequest) GetSinglePageData() bool {
 
 type GetSingleResourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Resource      *anypb.Any             `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
+	Resource *anypb.Any `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty" yaml:"resource,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetSingleResourceResponse) Reset() {
 	*x = GetSingleResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[34]
+	mi := &file_plugin_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2319,7 +2153,7 @@ func (x *GetSingleResourceResponse) String() string {
 func (*GetSingleResourceResponse) ProtoMessage() {}
 
 func (x *GetSingleResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[34]
+	mi := &file_plugin_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2332,7 +2166,7 @@ func (x *GetSingleResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSingleResourceResponse.ProtoReflect.Descriptor instead.
 func (*GetSingleResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{34}
+	return file_plugin_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetSingleResourceResponse) GetResource() *anypb.Any {
@@ -2344,16 +2178,16 @@ func (x *GetSingleResourceResponse) GetResource() *anypb.Any {
 
 type SearchResourcesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Model         string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
-	Filter        *structpb.Struct       `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
-	Aggregate     bool                   `protobuf:"varint,3,opt,name=aggregate,proto3" json:"aggregate,omitempty"`
+	Model string `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty" yaml:"model,omitempty"`
+	Filter *structpb.Struct `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty" yaml:"filter,omitempty"`
+	Aggregate bool `protobuf:"varint,3,opt,name=aggregate,proto3" json:"aggregate,omitempty" yaml:"aggregate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SearchResourcesRequest) Reset() {
 	*x = SearchResourcesRequest{}
-	mi := &file_plugin_proto_msgTypes[35]
+	mi := &file_plugin_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2365,7 +2199,7 @@ func (x *SearchResourcesRequest) String() string {
 func (*SearchResourcesRequest) ProtoMessage() {}
 
 func (x *SearchResourcesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[35]
+	mi := &file_plugin_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2378,7 +2212,7 @@ func (x *SearchResourcesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchResourcesRequest.ProtoReflect.Descriptor instead.
 func (*SearchResourcesRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{35}
+	return file_plugin_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SearchResourcesRequest) GetModel() string {
@@ -2404,14 +2238,14 @@ func (x *SearchResourcesRequest) GetAggregate() bool {
 
 type SearchResourcesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Resources     *anypb.Any             `protobuf:"bytes,1,opt,name=resources,proto3" json:"resources,omitempty"`
+	Resources *anypb.Any `protobuf:"bytes,1,opt,name=resources,proto3" json:"resources,omitempty" yaml:"resources,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SearchResourcesResponse) Reset() {
 	*x = SearchResourcesResponse{}
-	mi := &file_plugin_proto_msgTypes[36]
+	mi := &file_plugin_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2423,7 +2257,7 @@ func (x *SearchResourcesResponse) String() string {
 func (*SearchResourcesResponse) ProtoMessage() {}
 
 func (x *SearchResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[36]
+	mi := &file_plugin_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2436,7 +2270,7 @@ func (x *SearchResourcesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchResourcesResponse.ProtoReflect.Descriptor instead.
 func (*SearchResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{36}
+	return file_plugin_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *SearchResourcesResponse) GetResources() *anypb.Any {
@@ -2448,15 +2282,15 @@ func (x *SearchResourcesResponse) GetResources() *anypb.Any {
 
 type GetRelationDocumentsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Connection    *structpb.Struct       `protobuf:"bytes,2,opt,name=connection,proto3" json:"connection,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`
+	Connection *structpb.Struct `protobuf:"bytes,2,opt,name=connection,proto3" json:"connection,omitempty" yaml:"connection,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetRelationDocumentsRequest) Reset() {
 	*x = GetRelationDocumentsRequest{}
-	mi := &file_plugin_proto_msgTypes[37]
+	mi := &file_plugin_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2468,7 +2302,7 @@ func (x *GetRelationDocumentsRequest) String() string {
 func (*GetRelationDocumentsRequest) ProtoMessage() {}
 
 func (x *GetRelationDocumentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[37]
+	mi := &file_plugin_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2481,7 +2315,7 @@ func (x *GetRelationDocumentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRelationDocumentsRequest.ProtoReflect.Descriptor instead.
 func (*GetRelationDocumentsRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{37}
+	return file_plugin_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *GetRelationDocumentsRequest) GetId() string {
@@ -2500,14 +2334,14 @@ func (x *GetRelationDocumentsRequest) GetConnection() *structpb.Struct {
 
 type GetRelationDocumentsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Documents     *anypb.Any             `protobuf:"bytes,1,opt,name=documents,proto3" json:"documents,omitempty"`
+	Documents *anypb.Any `protobuf:"bytes,1,opt,name=documents,proto3" json:"documents,omitempty" yaml:"documents,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetRelationDocumentsResponse) Reset() {
 	*x = GetRelationDocumentsResponse{}
-	mi := &file_plugin_proto_msgTypes[38]
+	mi := &file_plugin_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2519,7 +2353,7 @@ func (x *GetRelationDocumentsResponse) String() string {
 func (*GetRelationDocumentsResponse) ProtoMessage() {}
 
 func (x *GetRelationDocumentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[38]
+	mi := &file_plugin_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2532,7 +2366,7 @@ func (x *GetRelationDocumentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRelationDocumentsResponse.ProtoReflect.Descriptor instead.
 func (*GetRelationDocumentsResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{38}
+	return file_plugin_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *GetRelationDocumentsResponse) GetDocuments() *anypb.Any {
@@ -2544,16 +2378,16 @@ func (x *GetRelationDocumentsResponse) GetDocuments() *anypb.Any {
 
 type CreateNewResourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Model         string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
-	Data          *structpb.Struct       `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	Connection    *structpb.Struct       `protobuf:"bytes,3,opt,name=connection,proto3" json:"connection,omitempty"`
+	Model string `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty" yaml:"model,omitempty"`
+	Data *structpb.Struct `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty" yaml:"data,omitempty"`
+	Connection *structpb.Struct `protobuf:"bytes,3,opt,name=connection,proto3" json:"connection,omitempty" yaml:"connection,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateNewResourceRequest) Reset() {
 	*x = CreateNewResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[39]
+	mi := &file_plugin_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2565,7 +2399,7 @@ func (x *CreateNewResourceRequest) String() string {
 func (*CreateNewResourceRequest) ProtoMessage() {}
 
 func (x *CreateNewResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[39]
+	mi := &file_plugin_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2578,7 +2412,7 @@ func (x *CreateNewResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewResourceRequest.ProtoReflect.Descriptor instead.
 func (*CreateNewResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{39}
+	return file_plugin_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CreateNewResourceRequest) GetModel() string {
@@ -2604,14 +2438,14 @@ func (x *CreateNewResourceRequest) GetConnection() *structpb.Struct {
 
 type CreateNewResourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Resource      *anypb.Any             `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
+	Resource *anypb.Any `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty" yaml:"resource,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateNewResourceResponse) Reset() {
 	*x = CreateNewResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[40]
+	mi := &file_plugin_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2623,7 +2457,7 @@ func (x *CreateNewResourceResponse) String() string {
 func (*CreateNewResourceResponse) ProtoMessage() {}
 
 func (x *CreateNewResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[40]
+	mi := &file_plugin_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2636,7 +2470,7 @@ func (x *CreateNewResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewResourceResponse.ProtoReflect.Descriptor instead.
 func (*CreateNewResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{40}
+	return file_plugin_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CreateNewResourceResponse) GetResource() *anypb.Any {
@@ -2648,19 +2482,19 @@ func (x *CreateNewResourceResponse) GetResource() *anypb.Any {
 
 type UpdateResourceRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Model          string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
-	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
-	SinglePageData bool                   `protobuf:"varint,3,opt,name=single_page_data,json=singlePageData,proto3" json:"single_page_data,omitempty"`
-	Data           *structpb.Struct       `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`
-	Connect        *structpb.Struct       `protobuf:"bytes,5,opt,name=connect,proto3" json:"connect,omitempty"`
-	Disconnect     *structpb.Struct       `protobuf:"bytes,6,opt,name=disconnect,proto3" json:"disconnect,omitempty"`
+	Model string `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty" yaml:"model,omitempty"`
+	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`
+	SinglePageData bool `protobuf:"varint,3,opt,name=single_page_data,json=singlePageData,proto3" json:"single_page_data,omitempty" yaml:"single_page_data,omitempty"`
+	Data *structpb.Struct `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty" yaml:"data,omitempty"`
+	Connect *structpb.Struct `protobuf:"bytes,5,opt,name=connect,proto3" json:"connect,omitempty" yaml:"connect,omitempty"`
+	Disconnect *structpb.Struct `protobuf:"bytes,6,opt,name=disconnect,proto3" json:"disconnect,omitempty" yaml:"disconnect,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *UpdateResourceRequest) Reset() {
 	*x = UpdateResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[41]
+	mi := &file_plugin_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2672,7 +2506,7 @@ func (x *UpdateResourceRequest) String() string {
 func (*UpdateResourceRequest) ProtoMessage() {}
 
 func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[41]
+	mi := &file_plugin_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2685,7 +2519,7 @@ func (x *UpdateResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{41}
+	return file_plugin_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *UpdateResourceRequest) GetModel() string {
@@ -2732,14 +2566,14 @@ func (x *UpdateResourceRequest) GetDisconnect() *structpb.Struct {
 
 type UpdateResourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Resource      *anypb.Any             `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
+	Resource *anypb.Any `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty" yaml:"resource,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateResourceResponse) Reset() {
 	*x = UpdateResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[42]
+	mi := &file_plugin_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2751,7 +2585,7 @@ func (x *UpdateResourceResponse) String() string {
 func (*UpdateResourceResponse) ProtoMessage() {}
 
 func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[42]
+	mi := &file_plugin_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2764,7 +2598,7 @@ func (x *UpdateResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateResourceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{42}
+	return file_plugin_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *UpdateResourceResponse) GetResource() *anypb.Any {
@@ -2776,15 +2610,15 @@ func (x *UpdateResourceResponse) GetResource() *anypb.Any {
 
 type DeleteResourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Model         string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
-	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Model string `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty" yaml:"model,omitempty"`
+	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty" yaml:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DeleteResourceRequest) Reset() {
 	*x = DeleteResourceRequest{}
-	mi := &file_plugin_proto_msgTypes[43]
+	mi := &file_plugin_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2796,7 +2630,7 @@ func (x *DeleteResourceRequest) String() string {
 func (*DeleteResourceRequest) ProtoMessage() {}
 
 func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[43]
+	mi := &file_plugin_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2809,7 +2643,7 @@ func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteResourceRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{43}
+	return file_plugin_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *DeleteResourceRequest) GetModel() string {
@@ -2828,15 +2662,15 @@ func (x *DeleteResourceRequest) GetId() string {
 
 type DeleteResourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty" yaml:"success,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty" yaml:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DeleteResourceResponse) Reset() {
 	*x = DeleteResourceResponse{}
-	mi := &file_plugin_proto_msgTypes[44]
+	mi := &file_plugin_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2848,7 +2682,7 @@ func (x *DeleteResourceResponse) String() string {
 func (*DeleteResourceResponse) ProtoMessage() {}
 
 func (x *DeleteResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[44]
+	mi := &file_plugin_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2861,7 +2695,7 @@ func (x *DeleteResourceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResourceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResourceResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{44}
+	return file_plugin_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DeleteResourceResponse) GetSuccess() bool {
@@ -2880,15 +2714,15 @@ func (x *DeleteResourceResponse) GetMessage() string {
 
 type DebugRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Stage         string                 `protobuf:"bytes,1,opt,name=stage,proto3" json:"stage,omitempty"`
-	Data          []*anypb.Any           `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+	Stage string `protobuf:"bytes,1,opt,name=stage,proto3" json:"stage,omitempty" yaml:"stage,omitempty"`
+	Data []*anypb.Any `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" yaml:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DebugRequest) Reset() {
 	*x = DebugRequest{}
-	mi := &file_plugin_proto_msgTypes[45]
+	mi := &file_plugin_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2900,7 +2734,7 @@ func (x *DebugRequest) String() string {
 func (*DebugRequest) ProtoMessage() {}
 
 func (x *DebugRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[45]
+	mi := &file_plugin_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2913,7 +2747,7 @@ func (x *DebugRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DebugRequest.ProtoReflect.Descriptor instead.
 func (*DebugRequest) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{45}
+	return file_plugin_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *DebugRequest) GetStage() string {
@@ -2932,14 +2766,14 @@ func (x *DebugRequest) GetData() []*anypb.Any {
 
 type DebugResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        *anypb.Any             `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	Result *anypb.Any `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty" yaml:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DebugResponse) Reset() {
 	*x = DebugResponse{}
-	mi := &file_plugin_proto_msgTypes[46]
+	mi := &file_plugin_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2951,7 +2785,7 @@ func (x *DebugResponse) String() string {
 func (*DebugResponse) ProtoMessage() {}
 
 func (x *DebugResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_plugin_proto_msgTypes[46]
+	mi := &file_plugin_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2964,7 +2798,7 @@ func (x *DebugResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DebugResponse.ProtoReflect.Descriptor instead.
 func (*DebugResponse) Descriptor() ([]byte, []int) {
-	return file_plugin_proto_rawDescGZIP(), []int{46}
+	return file_plugin_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *DebugResponse) GetResult() *anypb.Any {
@@ -2987,7 +2821,7 @@ const file_plugin_proto_rawDesc = "" +
 	"\x18HashiCorpHandshakeConfig\x12)\n" +
 	"\x10protocol_version\x18\x01 \x01(\rR\x0fprotocolVersion\x12(\n" +
 	"\x10magic_cookie_key\x18\x02 \x01(\tR\x0emagicCookieKey\x12,\n" +
-	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\xe4\b\n" +
+	"\x12magic_cookie_value\x18\x03 \x01(\tR\x10magicCookieValue\"\xc7\b\n" +
 	"\rPluginDetails\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -3007,28 +2841,26 @@ const file_plugin_proto_rawDesc = "" +
 	"\vload_status\x18\x0f \x01(\x0e2!.apito.plugin.v1.PluginLoadStatusR\n" +
 	"loadStatus\x12N\n" +
 	"\x0factivate_status\x18\x10 \x01(\x0e2%.apito.plugin.v1.PluginActivateStatusR\x0eactivateStatus\x12.\n" +
-	"\x13enable_for_projects\x18\x11 \x03(\tR\x11enableForProjects\x12;\n" +
-	"\blanguage\x18\x12 \x01(\x0e2\x1f.apito.plugin.v1.PluginLanguageR\blanguage\x12<\n" +
+	"\x13enable_for_projects\x18\x11 \x03(\tR\x11enableForProjects\x12\x1a\n" +
+	"\blanguage\x18\x12 \x01(\tR\blanguage\x12<\n" +
 	"\tui_config\x18\x13 \x01(\v2\x1f.apito.plugin.v1.PluginUIConfigR\buiConfig\x12<\n" +
 	"\x1aregistered_graphql_schemas\x18\x14 \x03(\tR\x18registeredGraphqlSchemas\x120\n" +
 	"\x14registered_rest_apis\x18\x15 \x03(\tR\x12registeredRestApis\x12X\n" +
-	"\x15graphql_schema_config\x18\x16 \x01(\v2$.apito.plugin.v1.GraphQLSchemaConfigR\x13graphqlSchemaConfig\x12F\n" +
-	"\x0frest_api_config\x18\x17 \x01(\v2\x1e.apito.plugin.v1.RESTApiConfigR\rrestApiConfig\x12\x1f\n" +
+	"\x15graphql_schema_config\x18\x16 \x01(\v2$.apito.plugin.v1.GraphQLSchemaConfigR\x13graphqlSchemaConfig\x12J\n" +
+	"\x0frest_api_config\x18\x17 \x03(\v2\".apito.plugin.v1.RESTApiConfigItemR\rrestApiConfig\x12\x1f\n" +
 	"\vbinary_path\x18\x18 \x01(\tR\n" +
 	"binaryPath\x12T\n" +
 	"\x10handshake_config\x18\x19 \x01(\v2).apito.plugin.v1.HashiCorpHandshakeConfigR\x0fhandshakeConfig\"\xf1\x01\n" +
 	"\x13GraphQLSchemaConfig\x12B\n" +
 	"\aqueries\x18\x01 \x03(\v2(.apito.plugin.v1.GraphQLSchemaConfigItemR\aqueries\x12F\n" +
 	"\tmutations\x18\x02 \x03(\v2(.apito.plugin.v1.GraphQLSchemaConfigItemR\tmutations\x12N\n" +
-	"\rsubscriptions\x18\x03 \x03(\v2(.apito.plugin.v1.GraphQLSchemaConfigItemR\rsubscriptions\"k\n" +
+	"\rsubscriptions\x18\x03 \x03(\v2(.apito.plugin.v1.GraphQLSchemaConfigItemR\rsubscriptions\"K\n" +
 	"\x17GraphQLSchemaConfigItem\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12<\n" +
-	"\tplacement\x18\x02 \x01(\x0e2\x1e.apito.plugin.v1.PlacementTypeR\tplacement\"K\n" +
-	"\rRESTApiConfig\x12:\n" +
-	"\x06routes\x18\x01 \x03(\v2\".apito.plugin.v1.RESTApiConfigItemR\x06routes\"g\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x1c\n" +
+	"\tplacement\x18\x02 \x01(\tR\tplacement\"G\n" +
 	"\x11RESTApiConfigItem\x12\x14\n" +
-	"\x05route\x18\x01 \x01(\tR\x05route\x12<\n" +
-	"\tplacement\x18\x02 \x01(\x0e2\x1e.apito.plugin.v1.PlacementTypeR\tplacement\"\x8a\x01\n" +
+	"\x05route\x18\x01 \x01(\tR\x05route\x12\x1c\n" +
+	"\tplacement\x18\x02 \x01(\tR\tplacement\"\x8a\x01\n" +
 	"\aRESTApi\x12\x14\n" +
 	"\x05route\x18\x01 \x01(\tR\x05route\x12\x16\n" +
 	"\x06method\x18\x02 \x01(\tR\x06method\x12 \n" +
@@ -3176,24 +3008,7 @@ const file_plugin_proto_rawDesc = "" +
 	"\x1ePLUGIN_LOAD_STATUS_LOAD_FAILED\x10\x05*d\n" +
 	"\x14PluginActivateStatus\x12&\n" +
 	"\"PLUGIN_ACTIVATE_STATUS_DEACTIVATED\x10\x00\x12$\n" +
-	" PLUGIN_ACTIVATE_STATUS_ACTIVATED\x10\x01*I\n" +
-	"\rPlacementType\x12\x1b\n" +
-	"\x17PLACEMENT_TYPE_INTERNAL\x10\x00\x12\x1b\n" +
-	"\x17PLACEMENT_TYPE_EXTERNAL\x10\x01*\xcb\x02\n" +
-	"\x0ePluginLanguage\x12\x16\n" +
-	"\x12PLUGIN_LANGUAGE_GO\x10\x00\x12\x16\n" +
-	"\x12PLUGIN_LANGUAGE_JS\x10\x01\x12\x17\n" +
-	"\x13PLUGIN_LANGUAGE_CPP\x10\x02\x12\x1a\n" +
-	"\x16PLUGIN_LANGUAGE_PYTHON\x10\x03\x12\x18\n" +
-	"\x14PLUGIN_LANGUAGE_JAVA\x10\x04\x12\x18\n" +
-	"\x14PLUGIN_LANGUAGE_RUBY\x10\x05\x12\x17\n" +
-	"\x13PLUGIN_LANGUAGE_PHP\x10\x06\x12\x1a\n" +
-	"\x16PLUGIN_LANGUAGE_CSHARP\x10\a\x12\x1e\n" +
-	"\x1aPLUGIN_LANGUAGE_TYPESCRIPT\x10\b\x12\x18\n" +
-	"\x14PLUGIN_LANGUAGE_RUST\x10\t\x12\x17\n" +
-	"\x13PLUGIN_LANGUAGE_LUA\x10\n" +
-	"\x12\x18\n" +
-	"\x14PLUGIN_LANGUAGE_DART\x10\v2\x96\x04\n" +
+	" PLUGIN_ACTIVATE_STATUS_ACTIVATED\x10\x012\x96\x04\n" +
 	"\rPluginService\x12C\n" +
 	"\x04Init\x12\x1c.apito.plugin.v1.InitRequest\x1a\x1d.apito.plugin.v1.InitResponse\x12R\n" +
 	"\tMigration\x12!.apito.plugin.v1.MigrationRequest\x1a\".apito.plugin.v1.MigrationResponse\x12a\n" +
@@ -3225,149 +3040,142 @@ func file_plugin_proto_rawDescGZIP() []byte {
 	return file_plugin_proto_rawDescData
 }
 
-var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 47)
+var file_plugin_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_plugin_proto_msgTypes = make([]protoimpl.MessageInfo, 46)
 var file_plugin_proto_goTypes = []any{
 	(PluginLoadStatus)(0),                // 0: apito.plugin.v1.PluginLoadStatus
 	(PluginActivateStatus)(0),            // 1: apito.plugin.v1.PluginActivateStatus
-	(PlacementType)(0),                   // 2: apito.plugin.v1.PlacementType
-	(PluginLanguage)(0),                  // 3: apito.plugin.v1.PluginLanguage
-	(*EnvVariable)(nil),                  // 4: apito.plugin.v1.EnvVariable
-	(*HashiCorpHandshakeConfig)(nil),     // 5: apito.plugin.v1.HashiCorpHandshakeConfig
-	(*PluginDetails)(nil),                // 6: apito.plugin.v1.PluginDetails
-	(*GraphQLSchemaConfig)(nil),          // 7: apito.plugin.v1.GraphQLSchemaConfig
-	(*GraphQLSchemaConfigItem)(nil),      // 8: apito.plugin.v1.GraphQLSchemaConfigItem
-	(*RESTApiConfig)(nil),                // 9: apito.plugin.v1.RESTApiConfig
-	(*RESTApiConfigItem)(nil),            // 10: apito.plugin.v1.RESTApiConfigItem
-	(*RESTApi)(nil),                      // 11: apito.plugin.v1.RESTApi
-	(*PluginUIConfig)(nil),               // 12: apito.plugin.v1.PluginUIConfig
-	(*PluginUIIntegration)(nil),          // 13: apito.plugin.v1.PluginUIIntegration
-	(*PluginUIRoute)(nil),                // 14: apito.plugin.v1.PluginUIRoute
-	(*PluginUISettings)(nil),             // 15: apito.plugin.v1.PluginUISettings
-	(*PluginUIMenu)(nil),                 // 16: apito.plugin.v1.PluginUIMenu
-	(*ThirdPartyGraphQLSchemas)(nil),     // 17: apito.plugin.v1.ThirdPartyGraphQLSchemas
-	(*ThirdPartyRESTApi)(nil),            // 18: apito.plugin.v1.ThirdPartyRESTApi
-	(*PluginProject)(nil),                // 19: apito.plugin.v1.PluginProject
-	(*AuditData)(nil),                    // 20: apito.plugin.v1.AuditData
-	(*InitRequest)(nil),                  // 21: apito.plugin.v1.InitRequest
-	(*InitResponse)(nil),                 // 22: apito.plugin.v1.InitResponse
-	(*MigrationRequest)(nil),             // 23: apito.plugin.v1.MigrationRequest
-	(*MigrationResponse)(nil),            // 24: apito.plugin.v1.MigrationResponse
-	(*SchemaRegisterRequest)(nil),        // 25: apito.plugin.v1.SchemaRegisterRequest
-	(*SchemaRegisterResponse)(nil),       // 26: apito.plugin.v1.SchemaRegisterResponse
-	(*RESTApiRegisterRequest)(nil),       // 27: apito.plugin.v1.RESTApiRegisterRequest
-	(*RESTApiRegisterResponse)(nil),      // 28: apito.plugin.v1.RESTApiRegisterResponse
-	(*GetVersionRequest)(nil),            // 29: apito.plugin.v1.GetVersionRequest
-	(*GetVersionResponse)(nil),           // 30: apito.plugin.v1.GetVersionResponse
-	(*ExecuteRequest)(nil),               // 31: apito.plugin.v1.ExecuteRequest
-	(*ExecuteResponse)(nil),              // 32: apito.plugin.v1.ExecuteResponse
-	(*GenerateTenantTokenRequest)(nil),   // 33: apito.plugin.v1.GenerateTenantTokenRequest
-	(*GenerateTenantTokenResponse)(nil),  // 34: apito.plugin.v1.GenerateTenantTokenResponse
-	(*GetProjectDetailsRequest)(nil),     // 35: apito.plugin.v1.GetProjectDetailsRequest
-	(*GetProjectDetailsResponse)(nil),    // 36: apito.plugin.v1.GetProjectDetailsResponse
-	(*GetSingleResourceRequest)(nil),     // 37: apito.plugin.v1.GetSingleResourceRequest
-	(*GetSingleResourceResponse)(nil),    // 38: apito.plugin.v1.GetSingleResourceResponse
-	(*SearchResourcesRequest)(nil),       // 39: apito.plugin.v1.SearchResourcesRequest
-	(*SearchResourcesResponse)(nil),      // 40: apito.plugin.v1.SearchResourcesResponse
-	(*GetRelationDocumentsRequest)(nil),  // 41: apito.plugin.v1.GetRelationDocumentsRequest
-	(*GetRelationDocumentsResponse)(nil), // 42: apito.plugin.v1.GetRelationDocumentsResponse
-	(*CreateNewResourceRequest)(nil),     // 43: apito.plugin.v1.CreateNewResourceRequest
-	(*CreateNewResourceResponse)(nil),    // 44: apito.plugin.v1.CreateNewResourceResponse
-	(*UpdateResourceRequest)(nil),        // 45: apito.plugin.v1.UpdateResourceRequest
-	(*UpdateResourceResponse)(nil),       // 46: apito.plugin.v1.UpdateResourceResponse
-	(*DeleteResourceRequest)(nil),        // 47: apito.plugin.v1.DeleteResourceRequest
-	(*DeleteResourceResponse)(nil),       // 48: apito.plugin.v1.DeleteResourceResponse
-	(*DebugRequest)(nil),                 // 49: apito.plugin.v1.DebugRequest
-	(*DebugResponse)(nil),                // 50: apito.plugin.v1.DebugResponse
-	(*structpb.Struct)(nil),              // 51: google.protobuf.Struct
-	(*anypb.Any)(nil),                    // 52: google.protobuf.Any
+	(*EnvVariable)(nil),                  // 2: apito.plugin.v1.EnvVariable
+	(*HashiCorpHandshakeConfig)(nil),     // 3: apito.plugin.v1.HashiCorpHandshakeConfig
+	(*PluginDetails)(nil),                // 4: apito.plugin.v1.PluginDetails
+	(*GraphQLSchemaConfig)(nil),          // 5: apito.plugin.v1.GraphQLSchemaConfig
+	(*GraphQLSchemaConfigItem)(nil),      // 6: apito.plugin.v1.GraphQLSchemaConfigItem
+	(*RESTApiConfigItem)(nil),            // 7: apito.plugin.v1.RESTApiConfigItem
+	(*RESTApi)(nil),                      // 8: apito.plugin.v1.RESTApi
+	(*PluginUIConfig)(nil),               // 9: apito.plugin.v1.PluginUIConfig
+	(*PluginUIIntegration)(nil),          // 10: apito.plugin.v1.PluginUIIntegration
+	(*PluginUIRoute)(nil),                // 11: apito.plugin.v1.PluginUIRoute
+	(*PluginUISettings)(nil),             // 12: apito.plugin.v1.PluginUISettings
+	(*PluginUIMenu)(nil),                 // 13: apito.plugin.v1.PluginUIMenu
+	(*ThirdPartyGraphQLSchemas)(nil),     // 14: apito.plugin.v1.ThirdPartyGraphQLSchemas
+	(*ThirdPartyRESTApi)(nil),            // 15: apito.plugin.v1.ThirdPartyRESTApi
+	(*PluginProject)(nil),                // 16: apito.plugin.v1.PluginProject
+	(*AuditData)(nil),                    // 17: apito.plugin.v1.AuditData
+	(*InitRequest)(nil),                  // 18: apito.plugin.v1.InitRequest
+	(*InitResponse)(nil),                 // 19: apito.plugin.v1.InitResponse
+	(*MigrationRequest)(nil),             // 20: apito.plugin.v1.MigrationRequest
+	(*MigrationResponse)(nil),            // 21: apito.plugin.v1.MigrationResponse
+	(*SchemaRegisterRequest)(nil),        // 22: apito.plugin.v1.SchemaRegisterRequest
+	(*SchemaRegisterResponse)(nil),       // 23: apito.plugin.v1.SchemaRegisterResponse
+	(*RESTApiRegisterRequest)(nil),       // 24: apito.plugin.v1.RESTApiRegisterRequest
+	(*RESTApiRegisterResponse)(nil),      // 25: apito.plugin.v1.RESTApiRegisterResponse
+	(*GetVersionRequest)(nil),            // 26: apito.plugin.v1.GetVersionRequest
+	(*GetVersionResponse)(nil),           // 27: apito.plugin.v1.GetVersionResponse
+	(*ExecuteRequest)(nil),               // 28: apito.plugin.v1.ExecuteRequest
+	(*ExecuteResponse)(nil),              // 29: apito.plugin.v1.ExecuteResponse
+	(*GenerateTenantTokenRequest)(nil),   // 30: apito.plugin.v1.GenerateTenantTokenRequest
+	(*GenerateTenantTokenResponse)(nil),  // 31: apito.plugin.v1.GenerateTenantTokenResponse
+	(*GetProjectDetailsRequest)(nil),     // 32: apito.plugin.v1.GetProjectDetailsRequest
+	(*GetProjectDetailsResponse)(nil),    // 33: apito.plugin.v1.GetProjectDetailsResponse
+	(*GetSingleResourceRequest)(nil),     // 34: apito.plugin.v1.GetSingleResourceRequest
+	(*GetSingleResourceResponse)(nil),    // 35: apito.plugin.v1.GetSingleResourceResponse
+	(*SearchResourcesRequest)(nil),       // 36: apito.plugin.v1.SearchResourcesRequest
+	(*SearchResourcesResponse)(nil),      // 37: apito.plugin.v1.SearchResourcesResponse
+	(*GetRelationDocumentsRequest)(nil),  // 38: apito.plugin.v1.GetRelationDocumentsRequest
+	(*GetRelationDocumentsResponse)(nil), // 39: apito.plugin.v1.GetRelationDocumentsResponse
+	(*CreateNewResourceRequest)(nil),     // 40: apito.plugin.v1.CreateNewResourceRequest
+	(*CreateNewResourceResponse)(nil),    // 41: apito.plugin.v1.CreateNewResourceResponse
+	(*UpdateResourceRequest)(nil),        // 42: apito.plugin.v1.UpdateResourceRequest
+	(*UpdateResourceResponse)(nil),       // 43: apito.plugin.v1.UpdateResourceResponse
+	(*DeleteResourceRequest)(nil),        // 44: apito.plugin.v1.DeleteResourceRequest
+	(*DeleteResourceResponse)(nil),       // 45: apito.plugin.v1.DeleteResourceResponse
+	(*DebugRequest)(nil),                 // 46: apito.plugin.v1.DebugRequest
+	(*DebugResponse)(nil),                // 47: apito.plugin.v1.DebugResponse
+	(*structpb.Struct)(nil),              // 48: google.protobuf.Struct
+	(*anypb.Any)(nil),                    // 49: google.protobuf.Any
 }
 var file_plugin_proto_depIdxs = []int32{
-	4,  // 0: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	2,  // 0: apito.plugin.v1.PluginDetails.env_vars:type_name -> apito.plugin.v1.EnvVariable
 	0,  // 1: apito.plugin.v1.PluginDetails.load_status:type_name -> apito.plugin.v1.PluginLoadStatus
 	1,  // 2: apito.plugin.v1.PluginDetails.activate_status:type_name -> apito.plugin.v1.PluginActivateStatus
-	3,  // 3: apito.plugin.v1.PluginDetails.language:type_name -> apito.plugin.v1.PluginLanguage
-	12, // 4: apito.plugin.v1.PluginDetails.ui_config:type_name -> apito.plugin.v1.PluginUIConfig
-	7,  // 5: apito.plugin.v1.PluginDetails.graphql_schema_config:type_name -> apito.plugin.v1.GraphQLSchemaConfig
-	9,  // 6: apito.plugin.v1.PluginDetails.rest_api_config:type_name -> apito.plugin.v1.RESTApiConfig
-	5,  // 7: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
-	8,  // 8: apito.plugin.v1.GraphQLSchemaConfig.queries:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
-	8,  // 9: apito.plugin.v1.GraphQLSchemaConfig.mutations:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
-	8,  // 10: apito.plugin.v1.GraphQLSchemaConfig.subscriptions:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
-	2,  // 11: apito.plugin.v1.GraphQLSchemaConfigItem.placement:type_name -> apito.plugin.v1.PlacementType
-	10, // 12: apito.plugin.v1.RESTApiConfig.routes:type_name -> apito.plugin.v1.RESTApiConfigItem
-	2,  // 13: apito.plugin.v1.RESTApiConfigItem.placement:type_name -> apito.plugin.v1.PlacementType
-	51, // 14: apito.plugin.v1.RESTApi.schema:type_name -> google.protobuf.Struct
-	13, // 15: apito.plugin.v1.PluginUIConfig.integration:type_name -> apito.plugin.v1.PluginUIIntegration
-	15, // 16: apito.plugin.v1.PluginUIConfig.settings:type_name -> apito.plugin.v1.PluginUISettings
-	16, // 17: apito.plugin.v1.PluginUIIntegration.header_menu:type_name -> apito.plugin.v1.PluginUIMenu
-	14, // 18: apito.plugin.v1.PluginUIIntegration.routes:type_name -> apito.plugin.v1.PluginUIRoute
-	16, // 19: apito.plugin.v1.PluginUISettings.menu:type_name -> apito.plugin.v1.PluginUIMenu
-	51, // 20: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
-	51, // 21: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
-	51, // 22: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
-	51, // 23: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
-	51, // 24: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
-	51, // 25: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
-	51, // 26: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
-	51, // 27: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
-	51, // 28: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
-	4,  // 29: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
-	17, // 30: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
-	18, // 31: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
-	51, // 32: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
-	51, // 33: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
-	52, // 34: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
-	19, // 35: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
-	52, // 36: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
-	51, // 37: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
-	52, // 38: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
-	51, // 39: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
-	52, // 40: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
-	51, // 41: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
-	51, // 42: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
-	52, // 43: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
-	51, // 44: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
-	51, // 45: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
-	51, // 46: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
-	52, // 47: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
-	52, // 48: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
-	52, // 49: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
-	21, // 50: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
-	23, // 51: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
-	25, // 52: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
-	27, // 53: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
-	29, // 54: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
-	31, // 55: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
-	33, // 56: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
-	35, // 57: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
-	37, // 58: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
-	39, // 59: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
-	41, // 60: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
-	43, // 61: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
-	45, // 62: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
-	47, // 63: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
-	49, // 64: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
-	22, // 65: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
-	24, // 66: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
-	26, // 67: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
-	28, // 68: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
-	30, // 69: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
-	32, // 70: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
-	34, // 71: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
-	36, // 72: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
-	38, // 73: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
-	40, // 74: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
-	42, // 75: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
-	44, // 76: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
-	46, // 77: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
-	48, // 78: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
-	50, // 79: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
-	65, // [65:80] is the sub-list for method output_type
-	50, // [50:65] is the sub-list for method input_type
-	50, // [50:50] is the sub-list for extension type_name
-	50, // [50:50] is the sub-list for extension extendee
-	0,  // [0:50] is the sub-list for field type_name
+	9,  // 3: apito.plugin.v1.PluginDetails.ui_config:type_name -> apito.plugin.v1.PluginUIConfig
+	5,  // 4: apito.plugin.v1.PluginDetails.graphql_schema_config:type_name -> apito.plugin.v1.GraphQLSchemaConfig
+	7,  // 5: apito.plugin.v1.PluginDetails.rest_api_config:type_name -> apito.plugin.v1.RESTApiConfigItem
+	3,  // 6: apito.plugin.v1.PluginDetails.handshake_config:type_name -> apito.plugin.v1.HashiCorpHandshakeConfig
+	6,  // 7: apito.plugin.v1.GraphQLSchemaConfig.queries:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
+	6,  // 8: apito.plugin.v1.GraphQLSchemaConfig.mutations:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
+	6,  // 9: apito.plugin.v1.GraphQLSchemaConfig.subscriptions:type_name -> apito.plugin.v1.GraphQLSchemaConfigItem
+	48, // 10: apito.plugin.v1.RESTApi.schema:type_name -> google.protobuf.Struct
+	10, // 11: apito.plugin.v1.PluginUIConfig.integration:type_name -> apito.plugin.v1.PluginUIIntegration
+	12, // 12: apito.plugin.v1.PluginUIConfig.settings:type_name -> apito.plugin.v1.PluginUISettings
+	13, // 13: apito.plugin.v1.PluginUIIntegration.header_menu:type_name -> apito.plugin.v1.PluginUIMenu
+	11, // 14: apito.plugin.v1.PluginUIIntegration.routes:type_name -> apito.plugin.v1.PluginUIRoute
+	13, // 15: apito.plugin.v1.PluginUISettings.menu:type_name -> apito.plugin.v1.PluginUIMenu
+	48, // 16: apito.plugin.v1.ThirdPartyGraphQLSchemas.queries:type_name -> google.protobuf.Struct
+	48, // 17: apito.plugin.v1.ThirdPartyGraphQLSchemas.mutations:type_name -> google.protobuf.Struct
+	48, // 18: apito.plugin.v1.ThirdPartyGraphQLSchemas.subscriptions:type_name -> google.protobuf.Struct
+	48, // 19: apito.plugin.v1.ThirdPartyRESTApi.schema:type_name -> google.protobuf.Struct
+	48, // 20: apito.plugin.v1.PluginProject.schema:type_name -> google.protobuf.Struct
+	48, // 21: apito.plugin.v1.AuditData.author:type_name -> google.protobuf.Struct
+	48, // 22: apito.plugin.v1.AuditData.data:type_name -> google.protobuf.Struct
+	48, // 23: apito.plugin.v1.AuditData.meta:type_name -> google.protobuf.Struct
+	48, // 24: apito.plugin.v1.AuditData.additional_fields:type_name -> google.protobuf.Struct
+	2,  // 25: apito.plugin.v1.InitRequest.env_vars:type_name -> apito.plugin.v1.EnvVariable
+	14, // 26: apito.plugin.v1.SchemaRegisterResponse.schema:type_name -> apito.plugin.v1.ThirdPartyGraphQLSchemas
+	15, // 27: apito.plugin.v1.RESTApiRegisterResponse.apis:type_name -> apito.plugin.v1.ThirdPartyRESTApi
+	48, // 28: apito.plugin.v1.ExecuteRequest.args:type_name -> google.protobuf.Struct
+	48, // 29: apito.plugin.v1.ExecuteRequest.context:type_name -> google.protobuf.Struct
+	49, // 30: apito.plugin.v1.ExecuteResponse.result:type_name -> google.protobuf.Any
+	16, // 31: apito.plugin.v1.GetProjectDetailsResponse.project:type_name -> apito.plugin.v1.PluginProject
+	49, // 32: apito.plugin.v1.GetSingleResourceResponse.resource:type_name -> google.protobuf.Any
+	48, // 33: apito.plugin.v1.SearchResourcesRequest.filter:type_name -> google.protobuf.Struct
+	49, // 34: apito.plugin.v1.SearchResourcesResponse.resources:type_name -> google.protobuf.Any
+	48, // 35: apito.plugin.v1.GetRelationDocumentsRequest.connection:type_name -> google.protobuf.Struct
+	49, // 36: apito.plugin.v1.GetRelationDocumentsResponse.documents:type_name -> google.protobuf.Any
+	48, // 37: apito.plugin.v1.CreateNewResourceRequest.data:type_name -> google.protobuf.Struct
+	48, // 38: apito.plugin.v1.CreateNewResourceRequest.connection:type_name -> google.protobuf.Struct
+	49, // 39: apito.plugin.v1.CreateNewResourceResponse.resource:type_name -> google.protobuf.Any
+	48, // 40: apito.plugin.v1.UpdateResourceRequest.data:type_name -> google.protobuf.Struct
+	48, // 41: apito.plugin.v1.UpdateResourceRequest.connect:type_name -> google.protobuf.Struct
+	48, // 42: apito.plugin.v1.UpdateResourceRequest.disconnect:type_name -> google.protobuf.Struct
+	49, // 43: apito.plugin.v1.UpdateResourceResponse.resource:type_name -> google.protobuf.Any
+	49, // 44: apito.plugin.v1.DebugRequest.data:type_name -> google.protobuf.Any
+	49, // 45: apito.plugin.v1.DebugResponse.result:type_name -> google.protobuf.Any
+	18, // 46: apito.plugin.v1.PluginService.Init:input_type -> apito.plugin.v1.InitRequest
+	20, // 47: apito.plugin.v1.PluginService.Migration:input_type -> apito.plugin.v1.MigrationRequest
+	22, // 48: apito.plugin.v1.PluginService.SchemaRegister:input_type -> apito.plugin.v1.SchemaRegisterRequest
+	24, // 49: apito.plugin.v1.PluginService.RESTApiRegister:input_type -> apito.plugin.v1.RESTApiRegisterRequest
+	26, // 50: apito.plugin.v1.PluginService.GetVersion:input_type -> apito.plugin.v1.GetVersionRequest
+	28, // 51: apito.plugin.v1.PluginService.Execute:input_type -> apito.plugin.v1.ExecuteRequest
+	30, // 52: apito.plugin.v1.HostService.GenerateTenantToken:input_type -> apito.plugin.v1.GenerateTenantTokenRequest
+	32, // 53: apito.plugin.v1.HostService.GetProjectDetails:input_type -> apito.plugin.v1.GetProjectDetailsRequest
+	34, // 54: apito.plugin.v1.HostService.GetSingleResource:input_type -> apito.plugin.v1.GetSingleResourceRequest
+	36, // 55: apito.plugin.v1.HostService.SearchResources:input_type -> apito.plugin.v1.SearchResourcesRequest
+	38, // 56: apito.plugin.v1.HostService.GetRelationDocuments:input_type -> apito.plugin.v1.GetRelationDocumentsRequest
+	40, // 57: apito.plugin.v1.HostService.CreateNewResource:input_type -> apito.plugin.v1.CreateNewResourceRequest
+	42, // 58: apito.plugin.v1.HostService.UpdateResource:input_type -> apito.plugin.v1.UpdateResourceRequest
+	44, // 59: apito.plugin.v1.HostService.DeleteResource:input_type -> apito.plugin.v1.DeleteResourceRequest
+	46, // 60: apito.plugin.v1.HostService.Debug:input_type -> apito.plugin.v1.DebugRequest
+	19, // 61: apito.plugin.v1.PluginService.Init:output_type -> apito.plugin.v1.InitResponse
+	21, // 62: apito.plugin.v1.PluginService.Migration:output_type -> apito.plugin.v1.MigrationResponse
+	23, // 63: apito.plugin.v1.PluginService.SchemaRegister:output_type -> apito.plugin.v1.SchemaRegisterResponse
+	25, // 64: apito.plugin.v1.PluginService.RESTApiRegister:output_type -> apito.plugin.v1.RESTApiRegisterResponse
+	27, // 65: apito.plugin.v1.PluginService.GetVersion:output_type -> apito.plugin.v1.GetVersionResponse
+	29, // 66: apito.plugin.v1.PluginService.Execute:output_type -> apito.plugin.v1.ExecuteResponse
+	31, // 67: apito.plugin.v1.HostService.GenerateTenantToken:output_type -> apito.plugin.v1.GenerateTenantTokenResponse
+	33, // 68: apito.plugin.v1.HostService.GetProjectDetails:output_type -> apito.plugin.v1.GetProjectDetailsResponse
+	35, // 69: apito.plugin.v1.HostService.GetSingleResource:output_type -> apito.plugin.v1.GetSingleResourceResponse
+	37, // 70: apito.plugin.v1.HostService.SearchResources:output_type -> apito.plugin.v1.SearchResourcesResponse
+	39, // 71: apito.plugin.v1.HostService.GetRelationDocuments:output_type -> apito.plugin.v1.GetRelationDocumentsResponse
+	41, // 72: apito.plugin.v1.HostService.CreateNewResource:output_type -> apito.plugin.v1.CreateNewResourceResponse
+	43, // 73: apito.plugin.v1.HostService.UpdateResource:output_type -> apito.plugin.v1.UpdateResourceResponse
+	45, // 74: apito.plugin.v1.HostService.DeleteResource:output_type -> apito.plugin.v1.DeleteResourceResponse
+	47, // 75: apito.plugin.v1.HostService.Debug:output_type -> apito.plugin.v1.DebugResponse
+	61, // [61:76] is the sub-list for method output_type
+	46, // [46:61] is the sub-list for method input_type
+	46, // [46:46] is the sub-list for extension type_name
+	46, // [46:46] is the sub-list for extension extendee
+	0,  // [0:46] is the sub-list for field type_name
 }
 
 func init() { file_plugin_proto_init() }
@@ -3380,8 +3188,8 @@ func file_plugin_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_plugin_proto_rawDesc), len(file_plugin_proto_rawDesc)),
-			NumEnums:      4,
-			NumMessages:   47,
+			NumEnums:      2,
+			NumMessages:   46,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
