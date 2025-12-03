@@ -113,9 +113,43 @@ message PluginDetails {
   PluginUIConfig ui_config = 19;
   repeated string registered_graphql_schemas = 20;
   repeated string registered_rest_apis = 21;
+  GraphQLSchemaConfig graphql_schema_config = 22;
+  RESTApiConfig rest_api_config = 23;
   // HashiCorp specific fields
-  string binary_path = 22;
-  HashiCorpHandshakeConfig handshake_config = 23;
+  string binary_path = 24;
+  HashiCorpHandshakeConfig handshake_config = 25;
+}
+
+message GraphQLSchemaConfig {
+  repeated GraphQLSchemaConfigItem queries = 1;
+  repeated GraphQLSchemaConfigItem mutations = 2;
+  repeated GraphQLSchemaConfigItem subscriptions = 3;
+}
+
+message GraphQLSchemaConfigItem {
+  string name = 1;
+  PlacementType placement = 2;
+}
+
+enum PlacementType {
+  PLACEMENT_TYPE_INTERNAL = 0;
+  PLACEMENT_TYPE_EXTERNAL = 1;
+}
+
+message RESTApiConfig {
+  repeated RESTApiConfigItem routes = 1;
+}
+
+message RESTApiConfigItem {
+  string route = 1;
+  PlacementType placement = 2;
+}
+
+message RESTApi {
+  string route = 1;
+  string method = 2;
+  string description = 3;
+  google.protobuf.Struct schema = 4;
 }
 
 message PluginUIConfig {
